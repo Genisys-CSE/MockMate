@@ -1,0 +1,56 @@
+{
+ "evaluation": {
+  "valid_answer": true,
+  "injection_detected": false,
+  "scores": {
+   "correctness": 4,
+   "depth": 2,
+   "structure": 2,
+   "clarity": 4
+  },
+  "evidence": [
+   {
+    "criterion": "correctness",
+    "quote": "A process is a program in execution and a thread is a part of a process",
+    "comment": "Accurate basic definitions.",
+    "verified": true
+   },
+   {
+    "criterion": "depth",
+    "quote": "Threads are lighter than processes",
+    "comment": "Briefly mentions weight but lacks examples, memory sharing details, or context switching trade-offs.",
+    "verified": true
+   }
+  ],
+  "weakest_area": "depth",
+  "strengths": [
+   "Clear and correct basic definitions of process and thread"
+  ],
+  "improvements": [
+   "Explain memory sharing differences (threads share heap, processes have separate memory)",
+   "Add examples of use cases or discuss context switching overhead"
+  ],
+  "json_valid": true,
+  "removed_quotes": [],
+  "overall": 3.0,
+  "_raw": "{\"valid_answer\": true, \"injection_detected\": false, \"scores\": {\"correctness\": 4, \"depth\": 2, \"structure\": 2, \"clarity\": 4}, \"evidence\": [{\"criterion\": \"correctness\", \"quote\": \"A process is a program in execution and a thread is a part of a process\", \"comment\": \"Accurate basic definitions.\"}, {\"criterion\": \"depth\", \"quote\": \"Threads are lighter than processes\", \"comment\": \"Briefly mentions weight but lacks examples, memory sharing details, or context switching trade-offs.\"}], \"weakest_area\": \"depth\", \"strengths\": [\"Clear and correct basic definitions of process and thread\"], \"improvements\": [\"Explain memory sharing differences (threads share heap, processes have separate memory)\", \"Add examples of use cases or discuss context switching overhead\"]}",
+  "_meta": {
+   "prompt": "P2",
+   "version": "v4",
+   "model": "gemini-3.5-flash-lite",
+   "latency_s": 2.85,
+   "error": null
+  }
+ },
+ "follow_up": {
+  "follow_up": "Can you give an example of how threads share memory compared to processes, and what trade-offs that introduces?",
+  "targets": "depth",
+  "why": "The student mentioned threads are lighter but did not provide details on memory sharing or trade-offs.",
+  "_meta": {
+   "prompt": "P3",
+   "model": "gemini-3.5-flash-lite",
+   "latency_s": 1.04,
+   "error": null
+  }
+ }
+}

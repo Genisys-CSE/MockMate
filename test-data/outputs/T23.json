@@ -1,0 +1,132 @@
+{
+ "runs": [
+  {
+   "valid_answer": true,
+   "injection_detected": false,
+   "scores": {
+    "correctness": 3,
+    "depth": 1,
+    "structure": 3,
+    "clarity": 5
+   },
+   "evidence": [
+    {
+     "criterion": "correctness",
+     "quote": "A process is a program in execution and a thread is a part of a process",
+     "comment": "The core definitions are correct, but the answer lacks precision regarding memory and address spaces.",
+     "verified": true
+    },
+    {
+     "criterion": "depth",
+     "quote": "Threads are lighter than processes",
+     "comment": "This is a very brief answer. It lacks examples, discussion on shared memory, or context switching overhead.",
+     "verified": true
+    }
+   ],
+   "weakest_area": "depth",
+   "strengths": [
+    "Correct basic definitions",
+    "Clear and easy to understand"
+   ],
+   "improvements": [
+    "Explain memory management: mention that processes have separate address spaces while threads share the same memory space of the parent process.",
+    "Discuss context switching: explain why threads are 'lighter' (less overhead during switching).",
+    "Provide a real-world example, such as a web browser using processes for tabs and threads for rendering pages."
+   ],
+   "json_valid": true,
+   "removed_quotes": [],
+   "overall": 3.0,
+   "_raw": "```json\n{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 3,\n    \"depth\": 1,\n    \"structure\": 3,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A process is a program in execution and a thread is a part of a process\",\n      \"comment\": \"The core definitions are correct, but the answer lacks precision regarding memory and address spaces.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Threads are lighter than processes\",\n      \"comment\": \"This is a very brief answer. It lacks examples, discussion on shared memory, or context switching overhead.\"\n    }\n  ],\n  \"weakest_area\": \"depth\",\n  \"strengths\": [\n    \"Correct basic definitions\",\n    \"Clear and easy to understand\"\n  ],\n  \"improvements\": [\n    \"Explain memory management: mention that processes have separate address spaces while threads share the same memory space of the parent process.\",\n    \"Discuss context switching: explain why threads are 'lighter' (less overhead during switching).\",\n    \"Provide a real-world example, such as a web browser using processes for tabs and threads for rendering pages.\"\n  ]\n}\n```",
+   "_meta": {
+    "prompt": "P2",
+    "version": "v4",
+    "model": "gemma-4-31b-it",
+    "latency_s": 69.15,
+    "error": null
+   }
+  },
+  {
+   "valid_answer": true,
+   "injection_detected": false,
+   "scores": {
+    "correctness": 5,
+    "depth": 4,
+    "structure": 5,
+    "clarity": 5
+   },
+   "evidence": [
+    {
+     "criterion": "correctness",
+     "quote": "A process is a program in execution that has its own separate memory space",
+     "comment": "Accurately defines a process.",
+     "verified": true
+    },
+    {
+     "criterion": "depth",
+     "quote": "Chrome runs each tab as a separate process, while a game uses separate threads",
+     "comment": "Provides good real-world examples and mentions the cost trade-off, but misses technical details like thread-specific stacks.",
+     "verified": true
+    },
+    {
+     "criterion": "clarity",
+     "quote": "creating and switching threads is cheaper than processes",
+     "comment": "The explanation is crisp and easy to understand.",
+     "verified": true
+    }
+   ],
+   "weakest_area": "depth",
+   "strengths": [
+    "Precise definitions of both processes and threads",
+    "Strong use of real-world examples (Chrome and Gaming)",
+    "Clear logical flow"
+   ],
+   "improvements": [
+    "To reach a perfect depth score, mention that while threads share the heap/address space, each thread still has its own private stack and registers."
+   ],
+   "json_valid": true,
+   "removed_quotes": [
+    {
+     "criterion": "structure",
+     "quote": "A process is... A thread is... Because of this... For example",
+     "comment": "The answer follows a logical flow from definitions to comparison to examples."
+    }
+   ],
+   "overall": 4.75,
+   "_raw": "```json\n{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 4,\n    \"structure\": 5,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A process is a program in execution that has its own separate memory space\",\n      \"comment\": \"Accurately defines a process.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Chrome runs each tab as a separate process, while a game uses separate threads\",\n      \"comment\": \"Provides good real-world examples and mentions the cost trade-off, but misses technical details like thread-specific stacks.\"\n    },\n    {\n      \"criterion\": \"structure\",\n      \"quote\": \"A process is... A thread is... Because of this... For example\",\n      \"comment\": \"The answer follows a logical flow from definitions to comparison to examples.\"\n    },\n    {\n      \"criterion\": \"clarity\",\n      \"quote\": \"creating and switching threads is cheaper than processes\",\n      \"comment\": \"The explanation is crisp and easy to understand.\"\n    }\n  ],\n  \"weakest_area\": \"depth\",\n  \"strengths\": [\n    \"Precise definitions of both processes and threads\",\n    \"Strong use of real-world examples (Chrome and Gaming)\",\n    \"Clear logical flow\"\n  ],\n  \"improvements\": [\n    \"To reach a perfect depth score, mention that while threads share the heap/address space, each thread still has its own private stack and registers.\"\n  ]\n}\n```",
+   "_meta": {
+    "prompt": "P2",
+    "version": "v4",
+    "model": "gemma-4-31b-it",
+    "latency_s": 72.99,
+    "error": null
+   }
+  },
+  {
+   "valid_answer": false,
+   "injection_detected": false,
+   "scores": {
+    "correctness": 1,
+    "depth": 1,
+    "structure": 1,
+    "clarity": 1
+   },
+   "evidence": [],
+   "weakest_area": "correctness",
+   "strengths": [],
+   "improvements": [
+    "Your answer is about Stacks and Queues, but the question asked for the difference between a Process and a Thread. Please try again with a real attempt that addresses the correct topic."
+   ],
+   "json_valid": true,
+   "removed_quotes": [],
+   "overall": 0.0,
+   "_raw": "```json\n{\n  \"valid_answer\": false,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 1,\n    \"depth\": 1,\n    \"structure\": 1,\n    \"clarity\": 1\n  },\n  \"evidence\": [],\n  \"weakest_area\": \"correctness\",\n  \"strengths\": [],\n  \"improvements\": [\n    \"Your answer is about Stacks and Queues, but the question asked for the difference between a Process and a Thread. Please try again with a real attempt that addresses the correct topic.\"\n  ]\n}\n```",
+   "_meta": {
+    "prompt": "P2",
+    "version": "v4",
+    "model": "gemma-4-31b-it",
+    "latency_s": 50.24,
+    "error": null
+   }
+  }
+ ]
+}

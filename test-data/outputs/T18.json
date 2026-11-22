@@ -1,0 +1,44 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 5,
+  "depth": 5,
+  "structure": 5,
+  "clarity": 5
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "Two teammates disagreed on using Firebase or a SQL backend and work stopped for a day.",
+   "comment": "Clearly outlines the conflict and situation.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "I set up a 20-minute call, asked each to list pros and cons against our 48-hour deadline",
+   "comment": "Provides specific actions and criteria used to resolve the issue.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "correctness",
+ "strengths": [
+  "Used the STAR method effectively",
+  "Clear conflict resolution and objective criteria",
+  "Stated the final result and takeaway lesson"
+ ],
+ "improvements": [
+  "Keep up the great structure for behavioural questions"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 5.0,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 5,\n    \"structure\": 5,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"Two teammates disagreed on using Firebase or a SQL backend and work stopped for a day.\",\n      \"comment\": \"Clearly outlines the conflict and situation.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"I set up a 20-minute call, asked each to list pros and cons against our 48-hour deadline\",\n      \"comment\": \"Provides specific actions and criteria used to resolve the issue.\"\n    }\n  ],\n  \"weakest_area\": \"correctness\",\n  \"strengths\": [\n    \"Used the STAR method effectively\",\n    \"Clear conflict resolution and objective criteria\",\n    \"Stated the final result and takeaway lesson\"\n  ],\n  \"improvements\": [\n    \"Keep up the great structure for behavioural questions\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 2.05,
+  "error": null
+ }
+}

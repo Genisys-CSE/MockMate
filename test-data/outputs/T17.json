@@ -1,0 +1,27 @@
+{
+ "valid_answer": false,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 1,
+  "depth": 1,
+  "structure": 1,
+  "clarity": 1
+ },
+ "evidence": [],
+ "weakest_area": "correctness",
+ "strengths": [],
+ "improvements": [
+  "Please try again with a real attempt answering the question about deadlocks."
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 0.0,
+ "_raw": "{\n  \"valid_answer\": false,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 1,\n    \"depth\": 1,\n    \"structure\": 1,\n    \"clarity\": 1\n  },\n  \"evidence\": [],\n  \"weakest_area\": \"correctness\",\n  \"strengths\": [],\n  \"improvements\": [\n    \"Please try again with a real attempt answering the question about deadlocks.\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 2.13,
+  "error": null
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "role_ok": true,
+ "questions": [
+  {
+   "question": "What is the difference between inner join and left join in SQL, and when would you use each?",
+   "topic": "SQL",
+   "difficulty": "Medium",
+   "key_points": [
+    "Inner join returns only matching rows from both tables",
+    "Left join returns all rows from the left table and matched rows from the right table",
+    "Handling of NULL values in left join",
+    "Practical use cases for each"
+   ]
+  },
+  {
+   "question": "How do you handle missing or null values in a large dataset before performing analysis?",
+   "topic": "Data Cleaning",
+   "difficulty": "Medium",
+   "key_points": [
+    "Identifying missing data patterns",
+    "Imputation techniques using mean, median, or mode",
+    "Dropping rows or columns and its impact",
+    "Using domain knowledge for imputation"
+   ]
+  },
+  {
+   "question": "Explain the difference between L1 and L2 regularization in machine learning models.",
+   "topic": "Statistics and ML",
+   "difficulty": "Medium",
+   "key_points": [
+    "L1 adds absolute value of magnitude, L2 adds squared magnitude",
+    "L1 can lead to sparse models and feature selection",
+    "L2 shrinks coefficients evenly without zeroing them out",
+    "Impact on multicollinearity"
+   ]
+  },
+  {
+   "question": "How would you identify outliers in a dataset, and what methods would you use to treat them?",
+   "topic": "Data Analysis",
+   "difficulty": "Medium",
+   "key_points": [
+    "Use of Z-score and Interquartile Range (IQR) methods",
+    "Visualizing outliers with box plots or scatter plots",
+    "Deciding whether to remove, cap, or transform outliers",
+    "Impact of outliers on statistical measures like mean and variance"
+   ]
+  },
+  {
+   "question": "Given a table of user transactions, how would you write a SQL query to find the top 3 highest spending customers in each product category?",
+   "topic": "Advanced SQL",
+   "difficulty": "Medium",
+   "key_points": [
+    "Use of window functions like ROW_NUMBER() or RANK()",
+    "Partitioning by product category and ordering by total spend",
+    "Handling ties appropriately",
+    "Filtering results using subqueries or Common Table Expressions (CTEs)"
+   ]
+  }
+ ],
+ "_meta": {
+  "prompt": "P1",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 3.75,
+  "error": null
+ }
+}

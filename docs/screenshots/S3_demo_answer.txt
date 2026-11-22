@@ -1,0 +1,2 @@
+Question: What is the difference between process and thread, and when would you use multi-threading over multi-processing?
+Demo answer: A process is basically a program and a thread is a part of it. I think you use multi-threading when you want the application to run faster.

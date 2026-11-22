@@ -1,0 +1,66 @@
+{
+ "role_ok": true,
+ "questions": [
+  {
+   "question": "Can you explain the procedure and key considerations for conducting a statutory audit of inventory for a manufacturing company?",
+   "topic": "Auditing",
+   "difficulty": "Medium",
+   "key_points": [
+    "Observation of physical stock-taking",
+    "Valuation as per AS 2 or Ind AS 2 (Lower of Cost and Net Realizable Value)",
+    "Verification of cutoff procedures",
+    "Checking slow-moving and obsolete inventory"
+   ]
+  },
+  {
+   "question": "What is the difference between Deferred Tax Asset (DTA) and Deferred Tax Liability (DTL) under AS 22, and how do timing differences arise?",
+   "topic": "Accounting Standards",
+   "difficulty": "Medium",
+   "key_points": [
+    "Definition of timing differences between accounting income and taxable income",
+    "DTL arises when taxable income is less than accounting income",
+    "DTA arises when taxable income is greater than accounting income",
+    "Assessment of virtual certainty for recognition of DTA"
+   ]
+  },
+  {
+   "question": "How would you verify revenue recognition for a software company that provides both annual maintenance contracts and customized development services?",
+   "topic": "Auditing and Accounting",
+   "difficulty": "Medium",
+   "key_points": [
+    "Application of AS 9 or Ind AS 115 (Revenue from Contracts with Customers)",
+    "Percentage of completion method for customized development",
+    "Time-proportion basis for annual maintenance contracts",
+    "Unbilled revenue and deferred revenue adjustments"
+   ]
+  },
+  {
+   "question": "What are the primary compliances and tax audit reporting requirements under Section 44AB of the Income Tax Act for a business with a turnover exceeding 10 crores?",
+   "topic": "Taxation",
+   "difficulty": "Medium",
+   "key_points": [
+    "Applicability of e-invoicing and digital transactions threshold",
+    "Reporting in Form 3CD with emphasis on clauses relating to GST reconciliation",
+    "Transfer pricing and domestic related-party transactions under Section 40A(2)(b)",
+    "TDS default reporting under Clause 21(b)"
+   ]
+  },
+  {
+   "question": "Explain the concept of Internal Financial Controls (IFC) over financial reporting and your approach as an auditor in testing these controls in a company.",
+   "topic": "Internal Auditing",
+   "difficulty": "Medium",
+   "key_points": [
+    "Understanding the design and implementation (D&I) of controls",
+    "Operating effectiveness testing through walkthroughs and sampling",
+    "Identifying significant deficiencies and material weaknesses",
+    "Reporting under Section 143(3)(i) of the Companies Act, 2013"
+   ]
+  }
+ ],
+ "_meta": {
+  "prompt": "P1",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 6.67,
+  "error": null
+ }
+}

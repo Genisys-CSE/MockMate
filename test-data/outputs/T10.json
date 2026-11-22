@@ -1,0 +1,103 @@
+{
+ "polished": {
+  "valid_answer": true,
+  "injection_detected": false,
+  "scores": {
+   "correctness": 5,
+   "depth": 5,
+   "structure": 5,
+   "clarity": 5
+  },
+  "evidence": [
+   {
+    "criterion": "correctness",
+    "quote": "A process is a program in execution that has its own separate memory space",
+    "comment": "Accurately defines a process and its memory isolation.",
+    "verified": true
+   },
+   {
+    "criterion": "depth",
+    "quote": "Chrome runs each tab as a separate process, while a game uses separate threads for rendering and sound",
+    "comment": "Provides clear, real-world examples and use cases for both.",
+    "verified": true
+   },
+   {
+    "criterion": "structure",
+    "quote": "A process is a program in execution that has its own separate memory space. A thread is a smaller unit of execution",
+    "comment": "Moves logically from definitions to memory sharing, cost comparison, and practical examples.",
+    "verified": true
+   },
+   {
+    "criterion": "clarity",
+    "quote": "Because of this, creating and switching threads is cheaper than processes",
+    "comment": "Concise and easy to follow.",
+    "verified": true
+   }
+  ],
+  "weakest_area": "correctness",
+  "strengths": [
+   "Clear definitions of processes and threads",
+   "Good comparison of memory sharing and switching costs",
+   "Excellent real-world examples using Chrome and games"
+  ],
+  "improvements": [
+   "Mention synchronization mechanisms like mutexes or semaphores for threads",
+   "Briefly touch upon context switching overhead differences"
+  ],
+  "json_valid": true,
+  "removed_quotes": [],
+  "overall": 5.0,
+  "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 5,\n    \"structure\": 5,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A process is a program in execution that has its own separate memory space\",\n      \"comment\": \"Accurately defines a process and its memory isolation.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Chrome runs each tab as a separate process, while a game uses separate threads for rendering and sound\",\n      \"comment\": \"Provides clear, real-world examples and use cases for both.\"\n    },\n    {\n      \"criterion\": \"structure\",\n      \"quote\": \"A process is a program in execution that has its own separate memory space. A thread is a smaller unit of execution\",\n      \"comment\": \"Moves logically from definitions to memory sharing, cost comparison, and practical examples.\"\n    },\n    {\n      \"criterion\": \"clarity\",\n      \"quote\": \"Because of this, creating and switching threads is cheaper than processes\",\n      \"comment\": \"Concise and easy to follow.\"\n    }\n  ],\n  \"weakest_area\": \"correctness\",\n  \"strengths\": [\n    \"Clear definitions of processes and threads\",\n    \"Good comparison of memory sharing and switching costs\",\n    \"Excellent real-world examples using Chrome and games\"\n  ],\n  \"improvements\": [\n    \"Mention synchronization mechanisms like mutexes or semaphores for threads\",\n    \"Briefly touch upon context switching overhead differences\"\n  ]\n}",
+  "_meta": {
+   "prompt": "P2",
+   "version": "v4",
+   "model": "gemini-3.5-flash-lite",
+   "latency_s": 2.93,
+   "error": null
+  }
+ },
+ "casual": {
+  "valid_answer": true,
+  "injection_detected": false,
+  "scores": {
+   "correctness": 5,
+   "depth": 5,
+   "structure": 4,
+   "clarity": 4
+  },
+  "evidence": [
+   {
+    "criterion": "correctness",
+    "quote": "process means program which is running and it has its own memory. thread is like small part inside process and all threads share same memory",
+    "comment": "Accurately defines both concepts and their memory model.",
+    "verified": true
+   },
+   {
+    "criterion": "depth",
+    "quote": "chrome runs every tab as diff process and a game uses diff threads for rendering and sound",
+    "comment": "Provides clear real-world examples and mentions performance trade-offs.",
+    "verified": true
+   }
+  ],
+  "weakest_area": "structure",
+  "strengths": [
+   "Clear definitions of processes and threads",
+   "Good real-world examples (Chrome tabs, game rendering/sound)",
+   "Mentions cost comparison of creation and switching"
+  ],
+  "improvements": [
+   "Organize the response with a more formal introduction and summary"
+  ],
+  "json_valid": true,
+  "removed_quotes": [],
+  "overall": 4.5,
+  "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 5,\n    \"structure\": 4,\n    \"clarity\": 4\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"process means program which is running and it has its own memory. thread is like small part inside process and all threads share same memory\",\n      \"comment\": \"Accurately defines both concepts and their memory model.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"chrome runs every tab as diff process and a game uses diff threads for rendering and sound\",\n      \"comment\": \"Provides clear real-world examples and mentions performance trade-offs.\"\n    }\n  ],\n  \"weakest_area\": \"structure\",\n  \"strengths\": [\n    \"Clear definitions of processes and threads\",\n    \"Good real-world examples (Chrome tabs, game rendering/sound)\",\n    \"Mentions cost comparison of creation and switching\"\n  ],\n  \"improvements\": [\n    \"Organize the response with a more formal introduction and summary\"\n  ]\n}",
+  "_meta": {
+   "prompt": "P2",
+   "version": "v4",
+   "model": "gemini-3.5-flash-lite",
+   "latency_s": 2.46,
+   "error": null
+  }
+ }
+}

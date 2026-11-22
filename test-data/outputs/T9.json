@@ -1,0 +1,110 @@
+{
+ "transcript": [
+  {
+   "question": "What is the difference between a process and a thread?",
+   "topic": "Operating systems",
+   "answer": "A process is a program in execution and a thread is a part of a process. Threads are lighter than processes.",
+   "evaluation": {
+    "valid_answer": true,
+    "injection_detected": false,
+    "scores": {
+     "correctness": 4,
+     "depth": 2,
+     "structure": 2,
+     "clarity": 4
+    },
+    "evidence": [
+     {
+      "criterion": "correctness",
+      "quote": "A process is a program in execution and a thread is a part of a process",
+      "comment": "Accurate definitions for both terms.",
+      "verified": true
+     },
+     {
+      "criterion": "depth",
+      "quote": "Threads are lighter than processes",
+      "comment": "Brief mention of weight, but lacks details on memory sharing, context switching, or use cases.",
+      "verified": true
+     }
+    ],
+    "weakest_area": "depth",
+    "strengths": [
+     "Clear and correct basic definitions"
+    ],
+    "improvements": [
+     "Explain that processes have separate memory spaces while threads share memory",
+     "Mention context switching overhead differences",
+     "Give an example of multi-threading"
+    ],
+    "json_valid": true,
+    "removed_quotes": [],
+    "overall": 3.0,
+    "_raw": "{\"valid_answer\": true, \"injection_detected\": false, \"scores\": {\"correctness\": 4, \"depth\": 2, \"structure\": 2, \"clarity\": 4}, \"evidence\": [{\"criterion\": \"correctness\", \"quote\": \"A process is a program in execution and a thread is a part of a process\", \"comment\": \"Accurate definitions for both terms.\"}, {\"criterion\": \"depth\", \"quote\": \"Threads are lighter than processes\", \"comment\": \"Brief mention of weight, but lacks details on memory sharing, context switching, or use cases.\"}], \"weakest_area\": \"depth\", \"strengths\": [\"Clear and correct basic definitions\"], \"improvements\": [\"Explain that processes have separate memory spaces while threads share memory\", \"Mention context switching overhead differences\", \"Give an example of multi-threading\"]}",
+    "_meta": {
+     "prompt": "P2",
+     "version": "v4",
+     "model": "gemini-3.5-flash-lite",
+     "latency_s": 1.67,
+     "error": null
+    }
+   }
+  },
+  {
+   "question": "What is the difference between a stack and a queue?",
+   "topic": "Data structures",
+   "answer": "Stack ek LIFO data structure hai, matlab jo element last mein aata hai woh pehle nikalta hai. Queue FIFO hota hai, jaise ticket counter ki line. Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein.",
+   "evaluation": {
+    "valid_answer": true,
+    "injection_detected": false,
+    "scores": {
+     "correctness": 5,
+     "depth": 5,
+     "structure": 4,
+     "clarity": 5
+    },
+    "evidence": [
+     {
+      "criterion": "correctness",
+      "quote": "Stack ek LIFO data structure hai, matlab jo element last mein aata hai woh pehle nikalta hai",
+      "comment": "Accurately defines a stack and its LIFO nature.",
+      "verified": true
+     },
+     {
+      "criterion": "depth",
+      "quote": "Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein",
+      "comment": "Provides clear real-world use cases for both data structures.",
+      "verified": true
+     }
+    ],
+    "weakest_area": "structure",
+    "strengths": [
+     "Accurately defines LIFO and FIFO concepts",
+     "Provides helpful analogies and practical use cases"
+    ],
+    "improvements": [
+     "Organize the response into distinct paragraphs or bullet points for better flow"
+    ],
+    "json_valid": true,
+    "removed_quotes": [],
+    "overall": 4.75,
+    "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 5,\n    \"structure\": 4,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"Stack ek LIFO data structure hai, matlab jo element last mein aata hai woh pehle nikalta hai\",\n      \"comment\": \"Accurately defines a stack and its LIFO nature.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein\",\n      \"comment\": \"Provides clear real-world use cases for both data structures.\"\n    }\n  ],\n  \"weakest_area\": \"structure\",\n  \"strengths\": [\n    \"Accurately defines LIFO and FIFO concepts\",\n    \"Provides helpful analogies and practical use cases\"\n  ],\n  \"improvements\": [\n    \"Organize the response into distinct paragraphs or bullet points for better flow\"\n  ]\n}",
+    "_meta": {
+     "prompt": "P2",
+     "version": "v4",
+     "model": "gemini-3.5-flash-lite",
+     "latency_s": 4.26,
+     "error": null
+    }
+   }
+  }
+ ],
+ "report": {
+  "report_md": "## Overall summary\nYou demonstrated a solid understanding of fundamental data structures with great practical examples, but your operating systems answers lacked technical depth. The single most important thing to improve is expanding on underlying mechanisms—such as memory allocation and context switching—when explaining theoretical computer science concepts.\n\n## Scores\n| Question no. | Topic | Correctness | Depth | Structure | Clarity |\n| :--- | :--- | :---: | :---: | :---: | :---: |\n| 1 | Operating systems | 4 | 2 | 2 | 4 |\n| 2 | Data structures | 5 | 5 | 4 | 5 |\n\n## Strengths\n* **Clear basic definitions:** You accurately defined core concepts, as seen when you stated, *\"A process is a program in execution and a thread is a part of a process\"*.\n* **Practical examples:** You used excellent real-world use cases, noting that *\"Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein\"*.\n\n## Gaps to fix\n* **Lack of OS depth:** Your answer stopped at basic definitions. A strong answer would add that processes have isolated memory spaces while threads share heap memory within the same process.\n* **Structural flow:** When comparing two concepts, organize your points by distinct criteria (e.g., memory, communication, context switching) rather than blending them together.\n\n## 7-day practice plan\n| Day | Task | Time |\n| :--- | :--- | :--- |\n| Day 1 | Review process vs. thread memory spaces and context switching. | 30 mins |\n| Day 2 | Practice explaining CPU scheduling algorithms aloud. | 30 mins |\n| Day 3 | Revise memory management (paging, virtual memory). | 45 mins |\n| Day 4 | Re-answer Q1, incorporating memory and overhead details. | 20 mins |\n| Day 5 | Study synchronization primitives (Mutex vs Semaphore). | 40 mins |\n| Day 6 | Practice multithreading race conditions with code examples. | 45 mins |\n| Day 7 | Mock test: explain 3 OS concepts using structured headings. | 30 mins |\n\n## Questions to practise next\n1. What is a deadlock, and what are the four necessary conditions for its occurrence?\n2. What is the difference between a user-level thread and a kernel-level thread?\n3. How do mutexes and semaphores differ in controlling concurrent access to resources?",
+  "_meta": {
+   "prompt": "P4",
+   "model": "gemini-3.5-flash-lite",
+   "latency_s": 4.1,
+   "error": null
+  }
+ }
+}

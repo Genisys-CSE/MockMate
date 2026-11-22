@@ -1,0 +1,62 @@
+{
+ "role_ok": true,
+ "questions": [
+  {
+   "question": "Can you tell me a little bit about yourself and your background in computer science?",
+   "topic": "Introduction",
+   "difficulty": "Easy",
+   "key_points": [
+    "Brief educational background",
+    "Relevant programming languages and projects",
+    "Passion for software development",
+    "Clear and concise communication"
+   ]
+  },
+  {
+   "question": "Why do you want to join our company as a Software Engineer Intern?",
+   "topic": "Motivation",
+   "difficulty": "Easy",
+   "key_points": [
+    "Company mission or tech stack alignment",
+    "Desire to learn and grow professionally",
+    "Enthusiasm for building impactful products"
+   ]
+  },
+  {
+   "question": "What are your greatest strengths and how do they make you a good fit for this internship?",
+   "topic": "Strengths",
+   "difficulty": "Easy",
+   "key_points": [
+    "Relevant technical or soft skill mentioned",
+    "Practical example of the strength in action",
+    "Connection to the intern role requirements"
+   ]
+  },
+  {
+   "question": "What is one area you are currently trying to improve or consider as your weakness?",
+   "topic": "Weakness",
+   "difficulty": "Easy",
+   "key_points": [
+    "Genuine area for improvement",
+    "Avoids clichés like 'I work too hard'",
+    "Shows self-awareness and active steps taken to improve"
+   ]
+  },
+  {
+   "question": "Where do you see your career in the next three to five years?",
+   "topic": "Career Goals",
+   "difficulty": "Easy",
+   "key_points": [
+    "Ambition to grow technically",
+    "Interest in taking on more ownership",
+    "Desire for continuous learning in software engineering"
+   ]
+  }
+ ],
+ "_meta": {
+  "prompt": "P1",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 2.15,
+  "error": null
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 5,
+  "depth": 3,
+  "structure": 3,
+  "clarity": 4
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "प्रोसेस एक चलता हुआ प्रोग्राम है जिसकी अपनी अलग मेमोरी होती है",
+   "comment": "Accurately defines a process and its memory independence.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "सभी थ्रेड एक ही मेमोरी शेयर करते हैं, इसलिए थ्रेड बनाना सस्ता है",
+   "comment": "Mentions shared memory and lower creation cost, but lacks context on use cases or synchronization.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "depth",
+ "strengths": [
+  "Clear explanation of process vs thread memory model",
+  "Correctly notes that threads are lighter to create"
+ ],
+ "improvements": [
+  "Mention real-world use cases where multithreading is preferred",
+  "Add details about context switching overhead or race conditions"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 3.75,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 3,\n    \"structure\": 3,\n    \"clarity\": 4\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"प्रोसेस एक चलता हुआ प्रोग्राम है जिसकी अपनी अलग मेमोरी होती है\",\n      \"comment\": \"Accurately defines a process and its memory independence.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"सभी थ्रेड एक ही मेमोरी शेयर करते हैं, इसलिए थ्रेड बनाना सस्ता है\",\n      \"comment\": \"Mentions shared memory and lower creation cost, but lacks context on use cases or synchronization.\"\n    }\n  ],\n  \"weakest_area\": \"depth\",\n  \"strengths\": [\n    \"Clear explanation of process vs thread memory model\",\n    \"Correctly notes that threads are lighter to create\"\n  ],\n  \"improvements\": [\n    \"Mention real-world use cases where multithreading is preferred\",\n    \"Add details about context switching overhead or race conditions\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 2.12,
+  "error": null
+ }
+}

@@ -29,7 +29,7 @@ code/
   app.py           Streamlit app
   mockmate/        prompt loader, Gemini wrapper, guards, chain
   run_iterations.py  v1-v4 prompt experiment (repeated runs)
-  run_tests.py     18-case test suite
+  run_tests.py     23-case test suite
   tools/           scripts that build the diagrams and PDFs
 test-data/         test inputs, raw model outputs, experiment results
 docs/              diagrams, screenshots, Milestone 2 PDF, technical report

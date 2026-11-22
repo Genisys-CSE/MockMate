@@ -1,0 +1,10 @@
+{
+ "role_ok": false,
+ "questions": [],
+ "_meta": {
+  "prompt": "P1",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 1.12,
+  "error": null
+ }
+}

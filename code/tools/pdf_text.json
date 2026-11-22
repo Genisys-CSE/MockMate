@@ -1,0 +1,102 @@
+{
+ "modules": [
+  [
+   "Question Planner (P1)",
+   "Writes role- and round-specific questions with key points",
+   "Working",
+   "Tests T1-T5 passed (incl. non-tech role and fake role)"
+  ],
+  [
+   "Answer Evaluator (P2)",
+   "Scores answers 1-5 on 4 criteria with verbatim quotes; flags invalid answers and injection",
+   "Working",
+   "Final v4; tests T6, T7, T10-T20, T22 passed"
+  ],
+  [
+   "Follow-up Generator (P3)",
+   "Asks one follow-up on the weakest area; easier re-ask after invalid answers",
+   "Working",
+   "Tests T8, T21 passed"
+  ],
+  [
+   "Feedback Report Writer (P4)",
+   "Writes the final report with score table and 7-day plan",
+   "Working",
+   "Test T9 passed (6/6 headings, 393 words)"
+  ],
+  [
+   "Answer guards (code)",
+   "Blocks empty answers, removes quotes not found in the answer, computes overall score and weakest area",
+   "Working",
+   "T16 passed; removed 1 invented quote in T23"
+  ],
+  [
+   "Streamlit interview app",
+   "Full interview flow in the browser with report download",
+   "Working",
+   "Screenshots S3 and S4"
+  ],
+  [
+   "Prompt lab (v1 vs v4)",
+   "Runs the baseline and final evaluator side by side on one answer",
+   "Working",
+   "Screenshots S1 and S2"
+  ],
+  [
+   "Model fallback on daily quota",
+   "Switches to gemini-3.1-flash-lite when the main model's daily quota is used up",
+   "Partly working",
+   "Code path written; not yet triggered in a test"
+  ],
+  [
+   "Open-model evaluator (Gemma 4 31B)",
+   "Runs the final evaluator on an open-weights model",
+   "Partly working",
+   "Works from the scripts (T23: 1 of 6 quotes invented, caught by guard); not in the app UI"
+  ],
+  [
+   "Human agreement study",
+   "Compare MockMate scores with a senior's scores on 30 answers (M1 feedback)",
+   "Not started",
+   "Planned for Milestone 3"
+  ]
+ ],
+ "limitations": [
+  [
+   "Some style bias remains.",
+   "In the v4 experiment casual wording still scored 0.25 lower on average than the same content written formally, and T10 passed exactly at our 0.5 limit.",
+   "add a casual-wording few-shot example and re-measure on 20 polished/casual pairs."
+  ],
+  [
+   "No human ground truth yet.",
+   "Scores have not been compared with human scores, and strong answers got a perfect 5.0 in T6 and T18, so the evaluator may be generous at the top.",
+   "run the 30-answer agreement study with a senior (exact and within-1 agreement) in Milestone 3."
+  ],
+  [
+   "Free-tier limits.",
+   "Gemini 3.5 Flash-Lite allows 500 requests/day and 15/minute; one 3-question interview uses about 11 calls, so roughly 45 full interviews per day, and each step takes 2-6 s.",
+   "cache planner questions per role, show progress while waiting, and test the fallback model."
+  ],
+  [
+   "Open models invent quotes more often.",
+   "On Gemma 4 31B, 3 of 18 quotes in the experiment and 1 of 6 in T23 were not in the answer; only the code check stops them. Answers are typed only (no voice).",
+   "keep the code check mandatory, try a quote-extraction step before scoring, and add voice answers with speech-to-text."
+  ]
+ ],
+ "shots": [
+  [
+   "S1_T7_prompt_lab.png",
+   "Screenshot S1 - Test 7 input in the Prompt lab: the baseline v1 prompt returns free text with one score; the final v4 prompt returns 4 rubric scores (overall 3.25, weakest area depth)."
+  ],
+  [
+   "S2_T13_injection.png",
+   "Screenshot S2 - prompt-injection input (same type as Test 13; the injection answer from the iteration experiment): v1 treats it as a normal answer, v4 flags the injection, ignores it and scores only the real content (2/5)."
+  ],
+  [
+   "S3_T1_T8_interview.png",
+   "Screenshot S3 - Tests 1 and 8 in the live interview flow: P1 question for Software Engineer Intern (Technical), P2 scores with verified quotes, and the P3 follow-up on the weakest area (depth)."
+  ]
+ ],
+ "iter_reading": "v1 was already steady on this model (3 in all 5 runs), so its problems were format and fairness, not randomness: 0/11 parseable JSON, one number with no per-criterion breakdown or evidence, 5/5 for both wordings of the full answer, and 'idk' and the injection answer just got 1 with no flag. v2 fixed the format (11/11 JSON) but casual wording scored 0.62 lower than the same content written formally. v3 removed run-to-run variation (range 0) and added quoted evidence, but 2 of 28 quotes were not in the answer and the style gap grew to 0.75. v4 cut the style gap to 0.25, marked 'idk' invalid (score 0), flagged the injection (score 2.0), and all 21 quotes were verbatim. The style gap is smaller but not zero, so it is listed as a limitation.",
+ "test_reading": "22 of 23 tests passed. The failed test, T23, is the cross-model check: on Gemma 4 31B one of six evidence quotes was not in the student's answer. The code check removed it before the student saw it, which is why that check exists. Close calls: T10 passed exactly at the 0.5 limit, and T6 and T18 got a perfect 5.0, which may mean the evaluator is generous with strong answers. An earlier run on the same day failed T1-T4 because of a threading bug in our code (a shared API client was closed while in use); we fixed it in llm.py and re-ran the whole suite."
+}

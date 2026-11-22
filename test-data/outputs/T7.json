@@ -1,0 +1,43 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 4,
+  "depth": 2,
+  "structure": 3,
+  "clarity": 4
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "A process is a program in execution and a thread is a part of a process",
+   "comment": "Accurately defines both concepts.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "Threads are lighter than processes",
+   "comment": "Mentions weight difference but lacks details on memory sharing, context switching, or use cases.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "depth",
+ "strengths": [
+  "Clear and accurate basic definitions of process and thread"
+ ],
+ "improvements": [
+  "Mention memory sharing (threads share heap/code, processes have separate address spaces)",
+  "Explain context switching and resource overhead differences"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 3.25,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 4,\n    \"depth\": 2,\n    \"structure\": 3,\n    \"clarity\": 4\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A process is a program in execution and a thread is a part of a process\",\n      \"comment\": \"Accurately defines both concepts.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Threads are lighter than processes\",\n      \"comment\": \"Mentions weight difference but lacks details on memory sharing, context switching, or use cases.\"\n    }\n  ],\n  \"weakest_area\": \"depth\",\n  \"strengths\": [\n    \"Clear and accurate basic definitions of process and thread\"\n  ],\n  \"improvements\": [\n    \"Mention memory sharing (threads share heap/code, processes have separate address spaces)\",\n    \"Explain context switching and resource overhead differences\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 1.67,
+  "error": null
+ }
+}

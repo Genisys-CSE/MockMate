@@ -1,0 +1,43 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 2,
+  "depth": 1,
+  "structure": 2,
+  "clarity": 3
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "There was a disagreement in my team once. I talked to them and we solved it.",
+   "comment": "Too vague, missing actual context of the disagreement.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "I talked to them and we solved it.",
+   "comment": "Missing specific STAR details, actions taken, and concrete results.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "depth",
+ "strengths": [
+  "Recognizes that teamwork and communication are important"
+ ],
+ "improvements": [
+  "Use the STAR method (Situation, Task, Action, Result)",
+  "Explain the specific cause of the disagreement and your exact role in resolving it"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 2.0,
+ "_raw": "{\"valid_answer\": true, \"injection_detected\": false, \"scores\": {\"correctness\": 2, \"depth\": 1, \"structure\": 2, \"clarity\": 3}, \"evidence\": [{\"criterion\": \"correctness\", \"quote\": \"There was a disagreement in my team once. I talked to them and we solved it.\", \"comment\": \"Too vague, missing actual context of the disagreement.\"}, {\"criterion\": \"depth\", \"quote\": \"I talked to them and we solved it.\", \"comment\": \"Missing specific STAR details, actions taken, and concrete results.\"}], \"weakest_area\": \"depth\", \"strengths\": [\"Recognizes that teamwork and communication are important\"], \"improvements\": [\"Use the STAR method (Situation, Task, Action, Result)\", \"Explain the specific cause of the disagreement and your exact role in resolving it\"]}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 10.83,
+  "error": null
+ }
+}

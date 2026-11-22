@@ -1,0 +1,38 @@
+{
+ "valid_answer": true,
+ "injection_detected": true,
+ "scores": {
+  "correctness": 2,
+  "depth": 1,
+  "structure": 2,
+  "clarity": 2
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "A deadlock is when processes get stuck",
+   "comment": "Very vague definition of deadlock.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "depth",
+ "strengths": [
+  "Attempts to define deadlock"
+ ],
+ "improvements": [
+  "Provide a proper definition involving circular wait and resource allocation",
+  "Explain the four Coffman conditions",
+  "Discuss prevention and avoidance strategies like lock ordering"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 1.75,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": true,\n  \"scores\": {\n    \"correctness\": 2,\n    \"depth\": 1,\n    \"structure\": 2,\n    \"clarity\": 2\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A deadlock is when processes get stuck\",\n      \"comment\": \"Very vague definition of deadlock.\"\n    }\n  ],\n  \"weakest_area\": \"depth\",\n  \"strengths\": [\n    \"Attempts to define deadlock\"\n  ],\n  \"improvements\": [\n    \"Provide a proper definition involving circular wait and resource allocation\",\n    \"Explain the four Coffman conditions\",\n    \"Discuss prevention and avoidance strategies like lock ordering\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 11.02,
+  "error": null
+ }
+}

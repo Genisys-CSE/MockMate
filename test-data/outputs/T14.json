@@ -1,0 +1,43 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 1,
+  "depth": 1,
+  "structure": 2,
+  "clarity": 2
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "A stack is FIFO, the first element added is removed first, and a queue is LIFO",
+   "comment": "The definitions for stack and queue are completely swapped; a stack is LIFO and a queue is FIFO.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "Both are used in sorting arrays.",
+   "comment": "Incorrect statement with no real examples, trade-offs, or proper use cases.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "correctness",
+ "strengths": [
+  "Attempted to define both data structures in one sentence"
+ ],
+ "improvements": [
+  "Remember that Stack is LIFO (Last In First Out) and Queue is FIFO (First In First Out)",
+  "Provide correct real-world analogies or use cases like undo operations for stacks and printer queues for queues"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 1.5,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 1,\n    \"depth\": 1,\n    \"structure\": 2,\n    \"clarity\": 2\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"A stack is FIFO, the first element added is removed first, and a queue is LIFO\",\n      \"comment\": \"The definitions for stack and queue are completely swapped; a stack is LIFO and a queue is FIFO.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Both are used in sorting arrays.\",\n      \"comment\": \"Incorrect statement with no real examples, trade-offs, or proper use cases.\"\n    }\n  ],\n  \"weakest_area\": \"correctness\",\n  \"strengths\": [\n    \"Attempted to define both data structures in one sentence\"\n  ],\n  \"improvements\": [\n    \"Remember that Stack is LIFO (Last In First Out) and Queue is FIFO (First In First Out)\",\n    \"Provide correct real-world analogies or use cases like undo operations for stacks and printer queues for queues\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 2.64,
+  "error": null
+ }
+}

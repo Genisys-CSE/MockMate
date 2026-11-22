@@ -126,6 +126,41 @@
   "expected": "valid, overall >= 3.5"
  },
  {
+  "no": "T19",
+  "module": "P2 Evaluator",
+  "type": "Edge",
+  "input": "Keyword-stuffed answer: \"LIFO FIFO push pop ... printer queue\" (no sentences)",
+  "expected": "structure <= 2, clarity <= 3, overall <= 3.0"
+ },
+ {
+  "no": "T20",
+  "module": "P2 Evaluator",
+  "type": "Edge",
+  "input": "Correct process-vs-thread answer in Hindi (Devanagari script)",
+  "expected": "valid, overall >= 2.5, feedback in English (no Devanagari)"
+ },
+ {
+  "no": "T21",
+  "module": "P3 Follow-up",
+  "type": "Invalid",
+  "input": "Follow-up after the answer \"idk\"",
+  "expected": "easier re-ask on the same topic (<= 25 words), no probing"
+ },
+ {
+  "no": "T22",
+  "module": "P2 Evaluator",
+  "type": "Edge",
+  "input": "Vague behavioural answer with no situation details or result (3 short sentences)",
+  "expected": "overall <= 3.0 (not lenient)"
+ },
+ {
+  "no": "T23",
+  "module": "P2 Evaluator",
+  "type": "Edge",
+  "input": "Same final prompt on the open-weights Gemma 4 31B (3 answers: partial, polished, Hinglish)",
+  "expected": "valid JSON 3/3 and every quote verbatim (0 removed by the code check)"
+ },
+ {
   "answers": {
    "deadlock_strong": "A deadlock is when two or more processes wait for each other forever, so none of them can continue. It needs four conditions at the same time: mutual exclusion, hold and wait, no preemption and circular wait. For example, process P1 holds a printer and waits for the scanner, while P2 holds the scanner and waits for the printer. We can prevent it by breaking one condition, for example always requesting resources in a fixed order, or avoid it with the Banker's algorithm. Detection plus recovery is also possible, but killing processes has a cost.",
    "proc_partial": "A process is a program in execution and a thread is a part of a process. Threads are lighter than processes.",
@@ -137,7 +172,10 @@
    "wrong": "A stack is FIFO, the first element added is removed first, and a queue is LIFO, the last element added is removed first. Both are used in sorting arrays.",
    "idk": "idk",
    "offtopic": "I think India will win the next cricket world cup because our batting line-up is very strong and Bumrah is the best bowler.",
-   "star": "In my second year we built a library app for a hackathon in a team of four. Two teammates disagreed on using Firebase or a SQL backend and work stopped for a day. I set up a 20-minute call, asked each to list pros and cons against our 48-hour deadline, and we picked Firebase because it was faster to set up; the SQL idea was kept for version 2. We finished on time and reached the final round. I learned to turn arguments into a quick decision with clear criteria."
+   "star": "In my second year we built a library app for a hackathon in a team of four. Two teammates disagreed on using Firebase or a SQL backend and work stopped for a day. I set up a 20-minute call, asked each to list pros and cons against our 48-hour deadline, and we picked Firebase because it was faster to set up; the SQL idea was kept for version 2. We finished on time and reached the final round. I learned to turn arguments into a quick decision with clear criteria.",
+   "keywords": "LIFO FIFO push pop enqueue dequeue O(1) undo BFS call stack printer queue",
+   "devanagari": "प्रोसेस एक चलता हुआ प्रोग्राम है जिसकी अपनी अलग मेमोरी होती है। थ्रेड प्रोसेस के अंदर का छोटा हिस्सा है और सभी थ्रेड एक ही मेमोरी शेयर करते हैं, इसलिए थ्रेड बनाना सस्ता है।",
+   "star_vague": "There was a disagreement in my team once. I talked to them and we solved it. Teamwork is very important to me."
   },
   "questions": {
    "deadlock": "What is a deadlock and how can it be prevented?",

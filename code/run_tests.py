@@ -238,6 +238,52 @@ def t18():
     return ev, ev_short(ev), ev.get("json_valid") and ev.get("overall", 0) >= 3.5
 
 
+A["keywords"] = "LIFO FIFO push pop enqueue dequeue O(1) undo BFS call stack printer queue"
+A["devanagari"] = (
+    "प्रोसेस एक चलता हुआ प्रोग्राम है जिसकी अपनी अलग मेमोरी होती है। थ्रेड प्रोसेस के अंदर का छोटा हिस्सा है और सभी थ्रेड "
+    "एक ही मेमोरी शेयर करते हैं, इसलिए थ्रेड बनाना सस्ता है।"
+)
+A["star_vague"] = "There was a disagreement in my team once. I talked to them and we solved it. Teamwork is very important to me."
+
+
+def t19():
+    ev = chain.evaluate_answer(SWE, TECH, Q["stack"], A["keywords"])
+    s = ev.get("scores", {})
+    ok = ev.get("json_valid") and s.get("structure", 5) <= 2 and s.get("clarity", 5) <= 3 and ev.get("overall", 5) <= 3.0
+    return ev, ev_short(ev), ok
+
+
+def t20():
+    ev = chain.evaluate_answer(SWE, TECH, Q["proc"], A["devanagari"])
+    fb = " ".join(ev.get("strengths", []) + ev.get("improvements", []) + [e.get("comment", "") for e in ev.get("evidence", [])])
+    non_ascii = sum(1 for ch in fb if ord(ch) > 0x900 and ord(ch) < 0x980)
+    ok = ev.get("json_valid") and ev.get("valid_answer") and ev.get("overall", 0) >= 2.5 and non_ascii == 0
+    return ev, ev_short(ev) + f"; Devanagari letters in feedback: {non_ascii}", ok
+
+
+def t21():
+    ev = chain.evaluate_answer(SWE, TECH, Q["proc"], A["idk"])
+    fu = chain.generate_follow_up(SWE, TECH, Q["proc"], A["idk"], ev)
+    text = fu.get("follow_up", "")
+    on_topic = bool(re.search(r"process|thread|program", text.lower()))
+    no_probe = not re.search(r"trade-off|tradeoff|complexity|you said|you mentioned", text.lower())
+    ok = on_topic and no_probe and len(text.split()) <= 25
+    return {"evaluation": ev, "follow_up": fu}, f"\"{text}\" ({len(text.split())} words)", ok
+
+
+def t22():
+    ev = chain.evaluate_answer(SWE, "Behavioural", Q["conflict"], A["star_vague"])
+    return ev, ev_short(ev), ev.get("json_valid") and ev.get("overall", 5) <= 3.0
+
+
+def t23():
+    rows = [chain.evaluate_answer(SWE, TECH, Q["proc"], A[k], model=llm.OPEN_MODEL) for k in ("proc_partial", "proc_polished", "hinglish")]
+    removed = sum(len(r.get("removed_quotes", [])) for r in rows)
+    kept = sum(len(r.get("evidence", [])) for r in rows)
+    ok = all(r.get("json_valid") for r in rows) and removed == 0
+    return {"runs": rows}, f"JSON valid {sum(bool(r.get('json_valid')) for r in rows)}/3; quotes verbatim {kept}/{kept + removed} ({removed} removed by the code check)", ok
+
+
 TESTS = [
     ("T1", "P1 Planner", "Normal", "Role: Software Engineer Intern, Technical, Medium, 5 questions", "5 questions, >=4 on core CS topics, each with >=3 key points", t1),
     ("T2", "P1 Planner", "Normal", "Role: Data Analyst, Technical, 5 questions", "5 questions, >=3 on SQL / Excel / statistics / visualisation", t2),
@@ -257,6 +303,11 @@ TESTS = [
     ("T16", "P2 Evaluator", "Invalid", "Empty answer (only spaces)", "blocked in code before any API call", t16),
     ("T17", "P2 Evaluator", "Invalid", "Off-topic answer (cricket) to a deadlock question", "valid_answer = false or overall <= 1.5", t17),
     ("T18", "P2 Evaluator", "Normal", "Behavioural round: STAR answer about a team disagreement", "valid, overall >= 3.5", t18),
+    ("T19", "P2 Evaluator", "Edge", "Keyword-stuffed answer: \"LIFO FIFO push pop ... printer queue\" (no sentences)", "structure <= 2, clarity <= 3, overall <= 3.0", t19),
+    ("T20", "P2 Evaluator", "Edge", "Correct process-vs-thread answer in Hindi (Devanagari script)", "valid, overall >= 2.5, feedback in English (no Devanagari)", t20),
+    ("T21", "P3 Follow-up", "Invalid", "Follow-up after the answer \"idk\"", "easier re-ask on the same topic (<= 25 words), no probing", t21),
+    ("T22", "P2 Evaluator", "Edge", "Vague behavioural answer with no situation details or result (3 short sentences)", "overall <= 3.0 (not lenient)", t22),
+    ("T23", "P2 Evaluator", "Edge", "Same final prompt on the open-weights Gemma 4 31B (3 answers: partial, polished, Hinglish)", "valid JSON 3/3 and every quote verbatim (0 removed by the code check)", t23),
 ]
 
 

@@ -1,0 +1,25 @@
+{
+ "valid_answer": false,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 1,
+  "depth": 1,
+  "structure": 1,
+  "clarity": 1
+ },
+ "evidence": [],
+ "weakest_area": "correctness",
+ "strengths": [],
+ "improvements": [
+  "Your answer is empty. Type your answer (even a short attempt) and submit again."
+ ],
+ "blocked_before_api": true,
+ "overall": 0.0,
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": null,
+  "latency_s": 0,
+  "error": null
+ }
+}

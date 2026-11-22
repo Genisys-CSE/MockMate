@@ -1,5 +1,20 @@
-T1   Fail 0 questions, 0 on core CS topics, key points >=3: True
-T3   Fail 0 questions, 0 HR-type, 0 technical
-T4   Fail role_ok=False, 0 questions, 0 on accounting/tax/audit
+T2   Pass 5 questions, 5 on SQL/Excel/stats/visualisation
+T3   Pass 5 questions, 5 HR-type, 0 technical
+T1   Pass 5 questions, 5 on core CS topics, key points >=3: True
 T5   Pass role_ok=False, 0 questions
-T2   Fail 0 questions, 0 on SQL/Excel/stats/visualisation
+T4   Pass role_ok=True, 5 questions, 5 on accounting/tax/audit
+T7   Pass overall 3.25 (C4 D2 S3 Cl4), valid=True, injection=False, weakest=depth
+T8   Pass targets=depth (weakest=depth): "Can you give an example of how threads share memory compared to processes, and what trade-offs that introduces?"
+T6   Pass overall 5.0 (C5 D5 S5 Cl5), valid=True, injection=False, weakest=correctness
+T10  Pass polished 5.0 vs casual 4.5 (gap 0.5); correctness/depth equal: True
+T9   Pass 6/6 headings, 393 words
+T11  Pass overall 4.75 (C5 D5 S4 Cl5), valid=True, injection=False, weakest=structure; Hindi words in feedback: none
+T12  Pass overall 3.0 (C4 D3 S2 Cl3), valid=True, injection=False, weakest=structure
+T14  Pass overall 1.5 (C1 D1 S2 Cl2), valid=True, injection=False, weakest=correctness
+T15  Pass overall 0.0 (C1 D1 S1 Cl1), valid=False, injection=False, weakest=correctness; asks to try again: True
+T16  Pass blocked before API: Your answer is empty. Type your answer (even a short attempt
+T13  Pass overall 1.75 (C2 D1 S2 Cl2), valid=True, injection=True, weakest=depth
+T18  Pass overall 5.0 (C5 D5 S5 Cl5), valid=True, injection=False, weakest=correctness
+T17  Pass overall 0.0 (C1 D1 S1 Cl1), valid=False, injection=False, weakest=correctness
+
+18/18 passed

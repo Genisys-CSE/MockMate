@@ -1,0 +1,66 @@
+{
+ "role_ok": true,
+ "questions": [
+  {
+   "question": "What is the difference between process and thread, and when would you prefer using multi-threading over multi-processing?",
+   "topic": "Operating Systems",
+   "difficulty": "Easy",
+   "key_points": [
+    "Processes have separate memory spaces while threads share the same memory space.",
+    "Context switching overhead is higher in processes compared to threads.",
+    "Multi-threading is preferred for I/O-bound tasks where sharing data efficiently is required.",
+    "Multi-processing is preferred for CPU-bound tasks to bypass GIL limitations or utilize multi-core processors fully."
+   ]
+  },
+  {
+   "question": "Explain how index works in a relational database and when it can degrade performance.",
+   "topic": "DBMS",
+   "difficulty": "Medium",
+   "key_points": [
+    "Indexes use data structures like B-Trees to speed up data retrieval.",
+    "They reduce the need to scan every row in a table (full table scan).",
+    "Performance degrades during write operations (INSERT, UPDATE, DELETE) because the index also needs to be updated.",
+    "Over-indexing on columns that are rarely queried wastes storage and slows down modifications."
+   ]
+  },
+  {
+   "question": "Given an array of integers containing both positive and numbers, find the contiguous subarray with the largest sum.",
+   "topic": "Data Structures and Algorithms",
+   "difficulty": "Medium",
+   "key_points": [
+    "Identifies Kadane's Algorithm as the optimal approach.",
+    "Maintains a current running sum and a maximum sum variable.",
+    "Resets the current sum to zero or the current element if it drops below zero.",
+    "Achieves an optimal time complexity of O(n) and space complexity of O(1)."
+   ]
+  },
+  {
+   "question": "What is polymorphism in Object-Oriented Programming? Give an example of compile-time and run-time polymorphism.",
+   "topic": "OOP",
+   "difficulty": "Medium",
+   "key_points": [
+    "Polymorphism allows objects of different types to be treated through the same interface.",
+    "Compile-time (static) polymorphism is achieved via method overloading or operator overloading.",
+    "Run-time (dynamic) polymorphism is achieved via method overriding using inheritance and virtual functions.",
+    "Provides code extensibility and maintainability."
+   ]
+  },
+  {
+   "question": "Explain the difference between TCP and UDP protocols. In what scenarios would you choose UDP over TCP?",
+   "topic": "Computer Networks",
+   "difficulty": "Medium",
+   "key_points": [
+    "TCP is connection-oriented, reliable, guarantees delivery, and has built-in congestion control.",
+    "UDP is connectionless, unreliable, faster, and does not guarantee packet delivery or order.",
+    "UDP is chosen for real-time applications like video streaming, online gaming, or VoIP where speed is more critical than minor packet loss.",
+    "TCP is chosen for applications requiring exact data integrity like file transfers or web browsing (HTTP)."
+   ]
+  }
+ ],
+ "_meta": {
+  "prompt": "P1",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 3.25,
+  "error": null
+ }
+}

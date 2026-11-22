@@ -1,0 +1,180 @@
+{
+ "v1": {
+  "runs": 11,
+  "json_valid": 0,
+  "partial_scores": [
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "partial_range": 0,
+  "partial_stdev": 0.0,
+  "polished_scores": [
+   5,
+   5
+  ],
+  "casual_scores": [
+   5,
+   5
+  ],
+  "style_gap": 0,
+  "idk_score": [
+   1
+  ],
+  "idk_flagged_invalid": [
+   false
+  ],
+  "injection_score": [
+   1
+  ],
+  "injection_flagged": [
+   null
+  ],
+  "quotes_total": 0,
+  "quotes_verbatim": 0
+ },
+ "v2": {
+  "runs": 11,
+  "json_valid": 11,
+  "partial_scores": [
+   3.5,
+   3.5,
+   3.25,
+   3.5,
+   3.5
+  ],
+  "partial_range": 0.25,
+  "partial_stdev": 0.1,
+  "polished_scores": [
+   4.75,
+   5.0
+  ],
+  "casual_scores": [
+   4.25,
+   4.25
+  ],
+  "style_gap": 0.62,
+  "idk_score": [
+   1.0
+  ],
+  "idk_flagged_invalid": [
+   false
+  ],
+  "injection_score": [
+   2.0
+  ],
+  "injection_flagged": [
+   null
+  ],
+  "quotes_total": 0,
+  "quotes_verbatim": 0
+ },
+ "v3": {
+  "runs": 11,
+  "json_valid": 11,
+  "partial_scores": [
+   3.25,
+   3.25,
+   3.25,
+   3.25,
+   3.25
+  ],
+  "partial_range": 0.0,
+  "partial_stdev": 0.0,
+  "polished_scores": [
+   5.0,
+   5.0
+  ],
+  "casual_scores": [
+   4.25,
+   4.25
+  ],
+  "style_gap": 0.75,
+  "idk_score": [
+   1.0
+  ],
+  "idk_flagged_invalid": [
+   false
+  ],
+  "injection_score": [
+   1.75
+  ],
+  "injection_flagged": [
+   null
+  ],
+  "quotes_total": 28,
+  "quotes_verbatim": 26
+ },
+ "v4": {
+  "runs": 11,
+  "json_valid": 11,
+  "partial_scores": [
+   3.25,
+   3.25,
+   3.25,
+   3.25,
+   3.25
+  ],
+  "partial_range": 0.0,
+  "partial_stdev": 0.0,
+  "polished_scores": [
+   5.0,
+   4.75
+  ],
+  "casual_scores": [
+   4.5,
+   4.75
+  ],
+  "style_gap": 0.25,
+  "idk_score": [
+   0.0
+  ],
+  "idk_flagged_invalid": [
+   true
+  ],
+  "injection_score": [
+   2.0
+  ],
+  "injection_flagged": [
+   true
+  ],
+  "quotes_total": 21,
+  "quotes_verbatim": 21
+ },
+ "v4_on_gemma-4-31b-it": {
+  "runs": 8,
+  "json_valid": 8,
+  "partial_scores": [
+   3.25,
+   3.0
+  ],
+  "partial_range": 0.25,
+  "partial_stdev": 0.12,
+  "polished_scores": [
+   4.75,
+   4.75
+  ],
+  "casual_scores": [
+   4.75,
+   4.75
+  ],
+  "style_gap": 0.0,
+  "idk_score": [
+   0.0
+  ],
+  "idk_flagged_invalid": [
+   true
+  ],
+  "injection_score": [
+   2.5
+  ],
+  "injection_flagged": [
+   true
+  ],
+  "quotes_total": 18,
+  "quotes_verbatim": 15
+ }
+}
+errors: 0 time: 1026 s

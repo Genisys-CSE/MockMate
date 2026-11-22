@@ -107,8 +107,8 @@ def show_evaluation(ev: dict, compact: bool = False):
     if ev.get("injection_detected"):
         st.info("Your answer contained instructions to the evaluator. They were ignored; only the content was scored.")
     s = ev["scores"]
-    cols = st.columns(5)
-    cols[0].metric("Overall", f"{ev['overall']:.2f} / 5" if ev.get("valid_answer", True) else "0 / 5")
+    cols = st.columns([1.4, 1, 1, 1, 1])
+    cols[0].metric("Overall", f"{ev['overall']:g} / 5" if ev.get("valid_answer", True) else "0 / 5")
     for col, c in zip(cols[1:], guards.CRITERIA):
         col.metric(CRIT_LABEL[c] + (" ⬇" if c == ev["weakest_area"] else ""), f"{s[c]} / 5")
     if compact:
@@ -246,7 +246,8 @@ with tab_lab:
         a, b = st.columns(2)
         with a:
             st.markdown("##### v1 - baseline prompt (free text)")
-            st.code(v1.get("_raw", "") or str(v1["_meta"].get("error")), language=None)
+            with st.container(border=True):
+                st.markdown(v1.get("_raw", "") or str(v1["_meta"].get("error")))
             st.caption(f"Score found in text: {v1.get('overall')} · JSON: {'yes' if v1.get('json_valid') else 'no'} · {v1['_meta']['latency_s']} s")
         with b:
             st.markdown("##### v4 - final prompt (rubric, examples, guardrails, JSON schema)")

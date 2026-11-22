@@ -1,0 +1,43 @@
+{
+ "valid_answer": true,
+ "injection_detected": false,
+ "scores": {
+  "correctness": 5,
+  "depth": 5,
+  "structure": 4,
+  "clarity": 5
+ },
+ "evidence": [
+  {
+   "criterion": "correctness",
+   "quote": "Stack ek LIFO data structure hai, matlab jo element last mein aata hai woh pehle nikalta hai",
+   "comment": "Accurately defines a stack and LIFO behavior.",
+   "verified": true
+  },
+  {
+   "criterion": "depth",
+   "quote": "Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein",
+   "comment": "Provides clear real-world examples and use cases for both data structures.",
+   "verified": true
+  }
+ ],
+ "weakest_area": "structure",
+ "strengths": [
+  "Clear and accurate definitions of both stack and queue",
+  "Good practical examples and use cases given for each"
+ ],
+ "improvements": [
+  "Organize the response with bullet points or clearer separation for better flow"
+ ],
+ "json_valid": true,
+ "removed_quotes": [],
+ "overall": 4.75,
+ "_raw": "{\n  \"valid_answer\": true,\n  \"injection_detected\": false,\n  \"scores\": {\n    \"correctness\": 5,\n    \"depth\": 5,\n    \"structure\": 4,\n    \"clarity\": 5\n  },\n  \"evidence\": [\n    {\n      \"criterion\": \"correctness\",\n      \"quote\": \"Stack ek LIFO data structure hai, matlab jo element last mein aata hai woh pehle nikalta hai\",\n      \"comment\": \"Accurately defines a stack and LIFO behavior.\"\n    },\n    {\n      \"criterion\": \"depth\",\n      \"quote\": \"Stack ka use function calls aur undo mein hota hai, queue ka use printer jobs aur BFS mein\",\n      \"comment\": \"Provides clear real-world examples and use cases for both data structures.\"\n    }\n  ],\n  \"weakest_area\": \"structure\",\n  \"strengths\": [\n    \"Clear and accurate definitions of both stack and queue\",\n    \"Good practical examples and use cases given for each\"\n  ],\n  \"improvements\": [\n    \"Organize the response with bullet points or clearer separation for better flow\"\n  ]\n}",
+ "_meta": {
+  "prompt": "P2",
+  "version": "v4",
+  "model": "gemini-3.5-flash-lite",
+  "latency_s": 5.39,
+  "error": null
+ }
+}

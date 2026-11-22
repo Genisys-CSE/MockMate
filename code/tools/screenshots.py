@@ -15,7 +15,7 @@ from tools.render_diagrams import launch  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "docs" / "screenshots"
 OUT.mkdir(parents=True, exist_ok=True)
-BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8501"
+BASE = next((a for a in sys.argv[1:] if a.startswith("http")), "http://localhost:8501")
 
 PARTIAL_DEMO_ANSWER = None  # filled at runtime for the interview question
 
@@ -64,7 +64,10 @@ def main():
         # S1 - same input as Test 7 (partial process-vs-thread answer)
         lab_run(pg, "What is the difference between a process and a thread?", "Partial answer", "S1_T7_prompt_lab.png")
         # S2 - same input type as Test 13 (prompt injection)
-        lab_run(pg, "What is a deadlock and how can it be prevented?", "Injection attempt", "S2_T13_injection.png")
+        lab_run(pg, "What is the difference between a process and a thread?", "Injection attempt", "S2_T13_injection.png")
+        if "lab" in sys.argv:
+            b.close()
+            return
 
         # S3 - full interview: Test 1 setup (SWE Intern, Technical) -> P2 -> P3 (Test 8)
         pg.reload()

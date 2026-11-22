@@ -9,7 +9,7 @@ All notable changes since Milestone 1. Dates are in IST.
 - Added `code/mockmate/` (prompt loader, Gemini wrapper with retry, guards, chain) - prompts are loaded from the `.txt` files at runtime.
 - Added code guards: empty answers blocked before the API call; every evidence quote is checked against the student's answer and removed if not found; overall score and weakest area computed in code.
 - Added the Streamlit app `code/app.py` (mock interview flow + "Prompt lab" that runs v1 and v4 side by side).
-- Added `code/run_iterations.py` (v1-v4 experiment, repeated runs) and `code/run_tests.py` (18-case test suite); saved inputs and raw outputs in `test-data/`.
+- Added `code/run_iterations.py` (v1-v4 experiment, repeated runs) and `code/run_tests.py` (23-case test suite); saved inputs and raw outputs in `test-data/`.
 - Switched model from Gemini 2.5 Flash (planned in M1, no longer offered to new API keys) to Gemini 3.5 Flash-Lite (the free tier gives Flash models only 20 requests/day, Flash-Lite 500/day; 3.1 Flash-Lite is the automatic fallback); added a cross-model check of the final evaluator on the open-weights Gemma 4 31B.
 - Added diagrams, the Milestone 2 PDF and the technical report in `docs/`.
 
