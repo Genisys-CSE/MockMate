@@ -355,7 +355,7 @@ Inputs: <code>test-data/test_cases.json</code>; raw outputs: <code>test-data/out
 <tr><td colspan="5" style="text-align:right"><b>Total</b></td><td><b>{sum(m[5] for m in MEMBERS)}</b></td></tr></table>
 <p>All four members have reviewed and agreed to this contribution table. Each member can explain the part they claim.</p>
 <p class="small">AI-assistance note: Gemini is the model inside the product. An AI coding assistant (Claude) generated most of the code, first drafts of the
-prompts and this documentation under the team's direction; commits list it as co-author. The team chose the problem, rubric and tests, reviewed
+prompts and this documentation under the team's direction. The team chose the problem, rubric and tests, reviewed
 and ran everything, and is responsible for the submitted work. All test data is made up; no real personal data was used.</p>
 </div></body></html>""")
     return "".join(h)
