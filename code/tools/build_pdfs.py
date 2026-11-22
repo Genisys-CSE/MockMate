@@ -36,7 +36,7 @@ MEMBERS = [
      "Wrote P1-P4 final prompts; made Evaluator versions v1-v4; chose rubric, few-shot anchors and guard rules",
      "prompts/final/P1-P4, prompts/v1-v3, Section 2(c), Section 3 iteration log", 25),
     ("Aditi Tripathi", "S24CSEU1268", "Testing and evaluation",
-     "Designed the 18 test cases with expected outputs; ran the v1-v4 experiment; recorded pass/fail and failure analysis",
+     "Designed the 23 test cases with expected outputs; ran the v1-v4 experiment; recorded pass/fail and failure analysis",
      "code/run_tests.py, code/run_iterations.py, test-data/, Section 4", 25),
     ("Shivraj Singh Bhati", "S24CSEU0511", "App development and deployment",
      "Built the Streamlit app, Gemini wrapper with retry and fallback, code guards; deployed on Streamlit Cloud",
@@ -83,7 +83,7 @@ ITER_TEXT = {
     "v1": ("Milestone 1 baseline: one-line role + \"Evaluate the answer. Give a score from 1 to 5, a short reason, and one follow-up question.\" No system prompt, default temperature.",
            "Starting point from Milestone 1."),
     "v2": ("Added a system role (placement interviewer), a 4-criterion rubric (correctness, depth, structure, clarity) and a JSON output format written in the prompt.",
-           "v1 gave one vague number in free text that could not be parsed reliably and varied between runs."),
+           "v1 gave one vague number in free text, with no per-criterion breakdown, that could not be parsed as JSON (0/11)."),
     "v3": ("Added score anchors for 1/3/5 per criterion, 2 graded few-shot examples, the rule to quote the student's words as evidence, temperature 0.2 and JSON mode (response_mime_type).",
            "v2 had no shared meaning for each score and no evidence; mentor feedback asked for quoted evidence."),
     "v4": ("Final: content-over-style rule (Hinglish/grammar must not lower scores), verbatim-quote rule, answer wrapped in <student_answer> tags and treated as data (injection guard), invalid-answer rule (valid_answer=false), reference key points from P1, response schema; code checks every quote and computes the overall score.",
@@ -228,7 +228,7 @@ two few-shot examples, quoted evidence, JSON schema and guard rules (Section 3).
 API keys, so we moved to Gemini 3.5 Flash-Lite. (4) The planned open-source comparison was done with Gemma 4 31B instead of Llama/Mistral (same
 API, no extra key). (5) The 30-answer agreement study with a senior's scores is not done yet and moves to Milestone 3.</p>
 
-<h3>(b) Diagrams</h3>
+<h3 style="page-break-before: always">(b) Diagrams</h3>
 <div class="fig"><img src="{(DOCS/'diagrams'/'workflow.png').as_uri()}"><div class="cap">Figure 1 - Prompt workflow</div></div>
 <div class="fig"><img src="{(DOCS/'diagrams'/'decomposition.png').as_uri()}"><div class="cap">Figure 2 - Task decomposition</div></div>
 <div class="fig"><img src="{(DOCS/'diagrams'/'ioflow.png').as_uri()}"><div class="cap">Figure 3 - Input-output flow</div></div>
@@ -387,7 +387,7 @@ def technical_report(ctx) -> str:
     s1, s4 = summ["v1"], summ["v4"]
     fails = [r for r in tests if r["result"] == "Fail"]
     fail_txt = "; ".join(f"T{r['no'][1:]} ({r['input'][:45]}...)" if len(r['input']) > 45 else f"T{r['no'][1:]} ({r['input']})" for r in fails) or "none"
-    lim = " ".join(f"{a}" for a, _, _ in ctx["limitations"])
+    lim = "".join(f"<li><b>{esc(a)}</b> {esc(b)}</li>" for a, b, _ in ctx["limitations"])
     return f"""
 <h1 style="font-size:16pt">MockMate - Technical Report</h1>
 <p class="small">Team {TEAM_ID} · {TEAM} · {COURSE} · Problem C10 · 22 November 2026</p>
@@ -415,7 +415,9 @@ cross-model check on the open-weights Gemma 4 31B. Streamlit 1.67, Python 3.13, 
 <p><b>Prompt iteration (Evaluator, 11 runs per version).</b> v1 (baseline): {esc(iter_result(s1))}. v4 (final): {esc(iter_result(s4))}.</p>
 <p><b>Test suite.</b> {n_pass}/{len(tests)} tests passed (Normal, Edge and Invalid inputs across all four prompts). Failed: {esc(fail_txt)}. Full table in the Milestone 2 PDF, Section 4.</p>
 <h3>6. Limitations</h3>
-<p>{esc(lim)} Scores are practice feedback from a language model, not an official assessment; agreement with human (senior) scores on 30 answers will be measured in Milestone 3.</p>
+<ul>{lim}</ul>
+<p>Scores are practice feedback from a language model, not an official assessment; agreement with human (senior) scores on 30 answers will be measured in Milestone 3.
+Responsible use: all test answers are made up by the team, the app asks users not to type personal data, and no data is stored after the session.</p>
 """
 
 
