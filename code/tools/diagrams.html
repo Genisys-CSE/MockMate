@@ -1,0 +1,164 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>MockMate diagrams</title>
+<style>
+  :root{--ink:#1F2937;--muted:#6B7280;--line:#9CA3AF;--p1:#4F46E5;--p2:#0891B2;--p3:#D97706;--p4:#059669;--code:#6B7280;--bg:#fff}
+  body{font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;margin:0;padding:20px}
+  .dia{width:1000px;padding:22px 24px 26px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;margin-bottom:30px}
+  .dia h2{margin:0 0 4px;font-size:20px}
+  .dia .sub{color:var(--muted);font-size:13px;margin-bottom:16px}
+  .row{display:flex;align-items:stretch;gap:0}
+  .box{border:2px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;font-size:13px;line-height:1.35}
+  .box b{display:block;font-size:14px;margin-bottom:3px}
+  .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:#F3F4F6;color:#374151;margin-top:5px}
+  .p1{border-color:var(--p1)} .p1 b{color:var(--p1)}
+  .p2{border-color:var(--p2)} .p2 b{color:var(--p2)}
+  .p3{border-color:var(--p3)} .p3 b{color:var(--p3)}
+  .p4{border-color:var(--p4)} .p4 b{color:var(--p4)}
+  .code{border-style:dashed;border-color:var(--code);background:#F9FAFB}
+  .io{background:#EEF2FF;border-color:#C7D2FE}
+  .arrow{display:flex;align-items:center;justify-content:center;min-width:34px;color:var(--line);font-size:22px;font-weight:700}
+  .varrow{text-align:center;color:var(--line);font-size:22px;font-weight:700;line-height:1;margin:4px 0}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:14px}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px;border:2px solid var(--c)}
+  .loop{border:2px dashed #CBD5E1;border-radius:14px;padding:14px 12px 10px;position:relative;margin-top:6px}
+  .loop .lbl{position:absolute;top:-11px;left:16px;background:#fff;padding:0 6px;font-size:12px;color:var(--muted)}
+  /* tree */
+  .tree{display:flex;flex-direction:column;align-items:center}
+  .root{border:2px solid var(--ink);border-radius:10px;padding:10px 16px;font-weight:600;font-size:15px}
+  .kids{display:flex;gap:14px;margin-top:0;position:relative;padding-top:22px}
+  .kids::before{content:"";position:absolute;top:10px;left:12%;right:12%;border-top:2px solid var(--line)}
+  .kid{display:flex;flex-direction:column;gap:6px;width:225px;position:relative}
+  .kid::before{content:"";position:absolute;top:-12px;left:50%;height:12px;border-left:2px solid var(--line)}
+  .leaf{font-size:12.5px;border:1px solid #E5E7EB;border-radius:8px;padding:6px 9px;background:#FAFAFA}
+  .stack{display:flex;flex-direction:column;gap:8px}
+  .lane{display:flex;gap:10px;align-items:center;margin:8px 0}
+  .lane .lname{width:120px;font-size:12px;color:var(--muted);text-align:right}
+  table.flow{border-collapse:collapse;width:100%;font-size:12.5px}
+  table.flow th{background:#F3F4F6;text-align:left;padding:7px;border:1px solid #E5E7EB}
+  table.flow td{padding:7px;border:1px solid #E5E7EB;vertical-align:top}
+  .mono{font-family:Consolas,monospace;font-size:11.5px;color:#374151}
+</style></head><body>
+
+<!-- 1. PROMPT WORKFLOW -->
+<div class="dia" id="workflow">
+  <h2>Figure 1 - Prompt workflow (4-prompt chain)</h2>
+  <div class="sub">What happens from setup to report. Solid boxes are LLM calls (Gemini 3.5 Flash-Lite); dashed boxes are checks done in Python code.</div>
+  <div class="row">
+    <div class="box io" style="width:150px;align-self:center"><b>Student setup</b>job role, round type, difficulty, no. of questions</div>
+    <div class="arrow">→</div>
+    <div class="box p1" style="width:170px;align-self:center"><b>P1 Question Planner</b>writes N questions + 3-5 key points each<br><span class="tag">temp 0.7 · JSON schema</span></div>
+    <div class="arrow">→</div>
+    <div class="loop" style="flex:1">
+      <div class="lbl">repeat for each question</div>
+      <div class="row">
+        <div class="box code" style="width:105px"><b style="color:#374151">Guard 1</b>empty answer blocked before API</div>
+        <div class="arrow">→</div>
+        <div class="box p2" style="width:150px"><b>P2 Evaluator</b>4 rubric scores + verbatim quotes, invalid / injection flags<br><span class="tag">temp 0.2 · 2 examples · schema</span></div>
+        <div class="arrow">→</div>
+        <div class="box code" style="width:120px"><b style="color:#374151">Guard 2</b>quote check (remove fake quotes), overall + weakest area in code</div>
+      </div>
+      <div class="varrow" style="margin-left:420px">↓</div>
+      <div class="row" style="justify-content:flex-end">
+        <div class="box p2" style="width:160px"><b>P2 Evaluator (again)</b>scores the follow-up answer</div>
+        <div class="arrow">←</div>
+        <div class="box io" style="width:110px"><b style="color:#3730A3">Student</b>answers the follow-up</div>
+        <div class="arrow">←</div>
+        <div class="box p3" style="width:160px"><b>P3 Follow-up</b>one question on the weakest area<br><span class="tag">temp 0.5 · JSON schema</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="varrow" style="margin-left:820px">↓</div>
+  <div class="row" style="justify-content:flex-end">
+    <div class="box io" style="width:220px"><b style="color:#3730A3">Output to student</b>scores, evidence, follow-ups, report + download (.md)</div>
+    <div class="arrow">←</div>
+    <div class="box p4" style="width:260px"><b>P4 Report Writer</b>transcript + all evaluator JSON → summary, score table, strengths, gaps, 7-day plan, next questions<br><span class="tag">temp 0.4 · Markdown</span></div>
+  </div>
+  <div class="legend"><span style="--c:#4F46E5">P1</span><span style="--c:#0891B2">P2</span><span style="--c:#D97706">P3</span><span style="--c:#059669">P4</span><span style="--c:#6B7280">code check</span></div>
+</div>
+
+<!-- 2. TASK DECOMPOSITION -->
+<div class="dia" id="decomposition">
+  <h2>Figure 2 - Task decomposition</h2>
+  <div class="sub">The big task is split into four sub-tasks, each handled by one prompt, so each prompt has one clear job and its own test.</div>
+  <div class="tree">
+    <div class="root">Run a realistic mock interview and give feedback the student can act on</div>
+    <div class="kids">
+      <div class="kid">
+        <div class="box p1"><b>1. Plan the interview (P1)</b></div>
+        <div class="leaf">Pick topics that fit the role and round</div>
+        <div class="leaf">Order questions easy → hard</div>
+        <div class="leaf">Write key points of a strong answer (reference for P2)</div>
+        <div class="leaf">Refuse fake / unsafe roles</div>
+      </div>
+      <div class="kid">
+        <div class="box p2"><b>2. Judge each answer (P2)</b></div>
+        <div class="leaf">Score correctness, depth, structure, clarity (1-5)</div>
+        <div class="leaf">Quote the student's exact words as evidence</div>
+        <div class="leaf">Flag invalid answers and injection attempts</div>
+        <div class="leaf">Ignore style: same content = same score</div>
+      </div>
+      <div class="kid">
+        <div class="box p3"><b>3. Probe the weak spot (P3)</b></div>
+        <div class="leaf">Find the weakest criterion (code)</div>
+        <div class="leaf">Ask one follow-up that targets it</div>
+        <div class="leaf">Easier re-ask if the answer was invalid</div>
+        <div class="leaf">Score the follow-up answer with P2</div>
+      </div>
+      <div class="kid">
+        <div class="box p4"><b>4. Summarise and coach (P4)</b></div>
+        <div class="leaf">Overall level + the #1 thing to fix</div>
+        <div class="leaf">Score table per question</div>
+        <div class="leaf">Strengths and gaps backed by quotes</div>
+        <div class="leaf">7-day practice plan + next questions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. INPUT-OUTPUT FLOW -->
+<div class="dia" id="ioflow">
+  <h2>Figure 3 - Input-output flow</h2>
+  <div class="sub">What goes into each prompt and what comes out. Variables in {curly brackets} are filled from the student's input or from the previous step.</div>
+  <table class="flow">
+    <tr><th style="width:15%">Step</th><th style="width:30%">Input (variables)</th><th style="width:33%">Output (format)</th><th>Used by</th></tr>
+    <tr><td><b style="color:#4F46E5">P1 Planner</b></td><td class="mono">{role} {round} {difficulty} {n_questions}</td><td class="mono">JSON: role_ok, questions[ {question, topic, difficulty, key_points[]} ]</td><td>UI shows the question; key_points → P2</td></tr>
+    <tr><td><b style="color:#0891B2">P2 Evaluator</b></td><td class="mono">{role} {round} {question} {key_points} {answer}</td><td class="mono">JSON: valid_answer, injection_detected, scores{4}, evidence[ {criterion, quote, comment} ], weakest_area, strengths[], improvements[]</td><td>Guard 2 → UI score cards; weakest_area → P3; all → P4</td></tr>
+    <tr><td><b style="color:#374151">Guard 2 (code)</b></td><td class="mono">P2 JSON + {answer}</td><td class="mono">verified evidence, removed_quotes[], overall (mean or 0), weakest_area</td><td>UI, P3, P4</td></tr>
+    <tr><td><b style="color:#D97706">P3 Follow-up</b></td><td class="mono">{role} {round} {question} {answer} {valid_answer} {weakest_area} {weak_comment}</td><td class="mono">JSON: follow_up, targets, why</td><td>UI asks it; the answer goes back to P2</td></tr>
+    <tr><td><b style="color:#059669">P4 Report</b></td><td class="mono">{role} {round} {transcript_json} (all questions, answers, P2 outputs, follow-ups)</td><td class="mono">Markdown report with 6 fixed headings, under 450 words</td><td>UI + download (.md)</td></tr>
+  </table>
+</div>
+
+<!-- 4. SYSTEM ARCHITECTURE -->
+<div class="dia" id="architecture">
+  <h2>Figure 4 - System architecture</h2>
+  <div class="sub">How the prototype is built and deployed. Prompts live as text files in the repo and are loaded at runtime, so the repo, the prompt sheets and the app always match.</div>
+  <div class="row" style="gap:0;align-items:center">
+    <div class="box io" style="width:150px"><b style="color:#3730A3">Student (browser)</b>any device, no login</div>
+    <div class="arrow">⇄</div>
+    <div class="stack" style="width:440px">
+      <div class="box" style="border-color:#4F46E5"><b style="color:#4F46E5">Streamlit Community Cloud - code/app.py</b>Interview tab · Prompt lab (v1 vs v4) · About · session state keeps the transcript</div>
+      <div class="box" style="border-color:#7C3AED"><b style="color:#7C3AED">code/mockmate/ (Python package)</b>
+        <div class="row" style="gap:8px;margin-top:6px">
+          <div class="box" style="font-size:12px;padding:6px 8px">prompts.py<br>loads prompts/final/*.txt</div>
+          <div class="box" style="font-size:12px;padding:6px 8px">chain.py<br>P1-P4 + schemas</div>
+          <div class="box code" style="font-size:12px;padding:6px 8px">guards.py<br>checks in code</div>
+          <div class="box" style="font-size:12px;padding:6px 8px">llm.py<br>Gemini client, retry</div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow">⇄</div>
+    <div class="stack" style="width:300px">
+      <div class="box p2"><b>Google Gemini API</b>gemini-3.5-flash-lite (main)<br>gemma-4-31b-it (cross-model check)</div>
+      <div class="box code"><b style="color:#374151">Streamlit Secrets</b>GEMINI_API_KEY (never in the repo)</div>
+    </div>
+  </div>
+  <div class="row" style="gap:0;margin-top:16px;align-items:center">
+    <div class="box" style="width:300px;border-color:#111827"><b>GitHub repo (Genisys-CSE/MockMate)</b>prompts/ · code/ · test-data/ · docs/ · CHANGELOG.md</div>
+    <div class="arrow">→</div>
+    <div class="box" style="width:220px">auto-deploy on every push to <i>main</i></div>
+    <div class="arrow" style="min-width:20px"> </div>
+    <div class="box code" style="width:380px"><b style="color:#374151">Offline evaluation scripts</b>run_iterations.py (v1-v4 experiment) · run_tests.py (18 tests) → test-data/*.json</div>
+  </div>
+</div>
+</body></html>

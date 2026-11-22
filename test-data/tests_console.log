@@ -1,0 +1,5 @@
+T1   Fail 0 questions, 0 on core CS topics, key points >=3: True
+T3   Fail 0 questions, 0 HR-type, 0 technical
+T4   Fail role_ok=False, 0 questions, 0 on accounting/tax/audit
+T5   Pass role_ok=False, 0 questions
+T2   Fail 0 questions, 0 on SQL/Excel/stats/visualisation

@@ -29,7 +29,7 @@ code/
   app.py           Streamlit app
   mockmate/        prompt loader, Gemini wrapper, guards, chain
   run_iterations.py  v1-v4 prompt experiment (repeated runs)
-  run_tests.py     16-case test suite
+  run_tests.py     18-case test suite
   tools/           scripts that build the diagrams and PDFs
 test-data/         test inputs, raw model outputs, experiment results
 docs/              diagrams, screenshots, Milestone 2 PDF, technical report
@@ -47,7 +47,7 @@ py code/run_iterations.py   # re-run the prompt experiment
 The `.env` file is git-ignored. On Streamlit Cloud the key is stored in the app's Secrets, never in the repo.
 
 ## Models
-- Main: **Gemini 3.5 Flash** (Google Gemini API, free tier), temperature per prompt (P1 0.7, P2 0.2, P3 0.5, P4 0.4), JSON response schemas for P1-P3.
+- Main: **Gemini 3.5 Flash-Lite** (Google Gemini API, free tier), temperature per prompt (P1 0.7, P2 0.2, P3 0.5, P4 0.4), JSON response schemas for P1-P3.
 - Cross-model check: the final evaluator prompt was also run on the open-weights **Gemma 4 31B** (`test-data/iterations/summary.json`).
 
 ## Team

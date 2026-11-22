@@ -99,7 +99,7 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-def main(versions=("v1", "v2", "v3", "v4"), workers: int = 3):
+def main(versions=("v1", "v2", "v3", "v4"), workers: int = 2):
     jobs = [(v, lbl, i) for v in versions for lbl, n in PLAN for i in range(1, n + 1)]
     jobs += [("v4", lbl, i, llm.OPEN_MODEL) for lbl, n in PLAN for i in range(1, (2 if lbl == "partial" else n) + 1)]
     t0 = time.time()

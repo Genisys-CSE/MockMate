@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import time
 from dataclasses import dataclass
 
@@ -16,7 +17,11 @@ from google.genai import types
 
 from .prompts import ROOT
 
-MODEL = os.environ.get("MOCKMATE_MODEL", "gemini-3.5-flash")
+# Free tier (Nov 2026): 3.5 Flash-Lite = 500 requests/day, 15/min. The bigger
+# "Flash" models allow only 20 requests/day, too few for a public demo.
+MODEL = os.environ.get("MOCKMATE_MODEL", "gemini-3.5-flash-lite")
+# used only if the main model's daily quota is used up
+FALLBACK_MODELS = ["gemini-3.1-flash-lite"]
 OPEN_MODEL = "gemma-4-31b-it"  # open-weights model used for the cross-model check
 
 _client = None
@@ -51,14 +56,20 @@ def has_key() -> bool:
     return bool(_load_key())
 
 
+_lock = threading.Lock()
+
+
 def client() -> genai.Client:
+    """One shared client, created once under a lock (threads in the test
+    scripts must not replace it while another thread is using it)."""
     global _client
-    if _client is None:
-        key = _load_key()
-        if not key:
-            raise RuntimeError("No GEMINI_API_KEY found (Streamlit secrets, env var or .env).")
-        _client = genai.Client(api_key=key)
-    return _client
+    with _lock:
+        if _client is None:
+            key = _load_key()
+            if not key:
+                raise RuntimeError("No GEMINI_API_KEY found (Streamlit secrets, env var or .env).")
+            _client = genai.Client(api_key=key)
+        return _client
 
 
 @dataclass
@@ -94,9 +105,10 @@ def generate(
     schema=None,
     json_mode: bool = False,
     model: str | None = None,
-    retries: int = 4,
+    retries: int = 5,
 ) -> LLMResult:
     """One LLM call with retry on rate limits / server errors."""
+    allow_fallback = model is None
     model = model or MODEL
     is_gemma = model.startswith("gemma")
     cfg = {}
@@ -135,9 +147,19 @@ def generate(
         except Exception as e:  # rate limit / overload -> back off and retry
             last_err = str(e)
             msg = last_err.lower()
+            if "client has been closed" in msg:
+                time.sleep(1)
+                continue
             if "thinking" in msg and "thinking_config" in cfg:
                 cfg.pop("thinking_config")  # model does not support thinking level
                 continue
+            if "per day" in msg or "perday" in msg:
+                # daily quota gone: switch to the next model instead of waiting hours
+                if allow_fallback and model in [MODEL] + FALLBACK_MODELS[:-1]:
+                    chain_ = [MODEL] + FALLBACK_MODELS
+                    model = chain_[chain_.index(model) + 1]
+                    continue
+                break
             if any(s in msg for s in ("429", "resource_exhausted", "503", "unavailable", "500", "deadline")):
                 time.sleep(min(60, 8 * (attempt + 1)))
                 continue
