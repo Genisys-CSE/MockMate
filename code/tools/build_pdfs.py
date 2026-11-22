@@ -32,18 +32,20 @@ COURSE = "SCSE4041 Prompt Engineering - Mini Project, Milestone 2"
 PROTOTYPE = "https://mockmate-pe-b13-42.streamlit.app"
 REPO = "https://github.com/Genisys-CSE/MockMate"
 MEMBERS = [
-    ("Yug Chaturvedi (Team leader)", "S24CSEU1260", "Prompt design",
-     "Wrote P1-P4 final prompts; made Evaluator versions v1-v4; chose rubric, few-shot anchors and guard rules",
-     "prompts/final/P1-P4, prompts/v1-v3, Section 2(c), Section 3 iteration log", 25),
+    ("Yug Chaturvedi (Team leader)", "S24CSEU1260", "Team lead, solution architect and prompt design lead",
+     "Led the team and split the work; designed the 4-prompt chain (P1-P4) and the 1-5 rubric; wrote all four final prompts and "
+     "Evaluator versions v1-v4 with few-shot anchors and guard rules; analysed the iteration results and decided each change; "
+     "set the model choice (Flash-Lite + fallback); reviewed the final app, test results and this PDF before submission",
+     "prompts/final/P1-P4, prompts/v1-v3, Section 2 (design + prompt sheets), Section 3 iteration log, CHANGELOG", 34),
     ("Aditi Tripathi", "S24CSEU1268", "Testing and evaluation",
      "Designed the 23 test cases with expected outputs; ran the v1-v4 experiment; recorded pass/fail and failure analysis",
-     "code/run_tests.py, code/run_iterations.py, test-data/, Section 4", 25),
+     "code/run_tests.py, code/run_iterations.py, test-data/, Section 4", 22),
     ("Shivraj Singh Bhati", "S24CSEU0511", "App development and deployment",
      "Built the Streamlit app, Gemini wrapper with retry and fallback, code guards; deployed on Streamlit Cloud",
-     "code/app.py, code/mockmate/, prototype link", 25),
+     "code/app.py, code/mockmate/, prototype link", 22),
     ("Aryan Singh", "S24CSEU1256", "Documentation and diagrams",
-     "Drew the 4 diagrams; wrote README, CHANGELOG, Milestone 2 PDF and the technical report",
-     "code/tools/diagrams.html, docs/, README.md, CHANGELOG.md, Sections 1, 5, 6", 25),
+     "Drew the 4 diagrams; wrote README, Milestone 2 PDF and the technical report",
+     "code/tools/diagrams.html, docs/, README.md, Sections 1, 5, 6", 22),
 ]
 
 PROMPT_INFO = {

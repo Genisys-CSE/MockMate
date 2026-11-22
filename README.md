@@ -53,7 +53,7 @@ The `.env` file is git-ignored. On Streamlit Cloud the key is stored in the app'
 ## Team
 | Member | Enrollment no. | Role |
 |---|---|---|
-| Yug Chaturvedi (leader) | S24CSEU1260 | Prompt design (P1-P4, Evaluator v1-v4) |
+| Yug Chaturvedi (leader) | S24CSEU1260 | Team lead, solution architecture and prompt design (4-prompt chain, rubric, P1-P4, Evaluator v1-v4) |
 | Aditi Tripathi | S24CSEU1268 | Testing and evaluation (test suite, iteration experiment) |
 | Shivraj Singh Bhati | S24CSEU0511 | App development and deployment (Streamlit, Gemini integration, guards) |
 | Aryan Singh | S24CSEU1256 | Documentation and diagrams (diagrams, M2 PDF, technical report, README) |
