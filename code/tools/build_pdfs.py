@@ -352,8 +352,9 @@ Inputs: <code>test-data/test_cases.json</code>; raw outputs: <code>test-data/out
 <table><tr><th>Member name</th><th>Enrollment no.</th><th>Role</th><th>Tasks done in Milestone 2</th><th>Evidence</th><th>Contribution (%)</th></tr>{crow}
 <tr><td colspan="5" style="text-align:right"><b>Total</b></td><td><b>{sum(m[5] for m in MEMBERS)}</b></td></tr></table>
 <p>All four members have reviewed and agreed to this contribution table. Each member can explain the part they claim.</p>
-<p class="small">AI-assistance note: Gemini is the model inside the product. An AI coding assistant was also used to help write parts of the code and
-documentation; the team reviewed all of it and is responsible for the submitted work. All test data is made up; no real personal data was used.</p>
+<p class="small">AI-assistance note: Gemini is the model inside the product. An AI coding assistant (Claude) generated most of the code, first drafts of the
+prompts and this documentation under the team's direction; commits list it as co-author. The team chose the problem, rubric and tests, reviewed
+and ran everything, and is responsible for the submitted work. All test data is made up; no real personal data was used.</p>
 </div></body></html>""")
     return "".join(h)
 
@@ -391,18 +392,18 @@ def technical_report(ctx) -> str:
     return f"""
 <h1 style="font-size:16pt">MockMate - Technical Report</h1>
 <p class="small">Team {TEAM_ID} · {TEAM} · {COURSE} · Problem C10 · 22 November 2026</p>
-<h3>1. Purpose</h3>
+<h3>TR-1 Purpose</h3>
 <p>MockMate is a web app that runs a mock placement interview and gives structured, evidence-backed feedback on each typed answer, so a student
 knows exactly which part of an answer is weak and how to practise. Prototype: {PROTOTYPE} · Code: {REPO}</p>
-<h3>2. Architecture</h3>
+<h3>TR-2 Architecture</h3>
 <p>A Streamlit front end (<code>code/app.py</code>) calls a small Python package (<code>code/mockmate/</code>). <code>prompts.py</code> loads the four prompt
 files from <code>prompts/final/</code>; <code>chain.py</code> runs them in order with Pydantic response schemas; <code>guards.py</code> holds checks done in
 code; <code>llm.py</code> wraps the Gemini API with retry on rate limits and a fallback model when the daily quota is used up. The API key is stored in
 Streamlit Secrets. Pushing to GitHub redeploys the app on Streamlit Community Cloud.</p>
-<h3>3. Tools and models</h3>
+<h3>TR-3 Tools and models</h3>
 <p>Google Gemini API (<code>google-genai</code> SDK), main model <b>{summ['_info']['model']}</b> (free tier, 500 requests/day), fallback gemini-3.1-flash-lite,
 cross-model check on the open-weights Gemma 4 31B. Streamlit 1.67, Python 3.13, Playwright for screenshots and PDFs.</p>
-<h3>4. Prompt design</h3>
+<h3>TR-4 Prompt design</h3>
 <table>
 <tr><th>Prompt</th><th>Technique</th><th>Settings</th></tr>
 <tr><td>P1 Planner</td><td>Role prompting, rules per round type, key points as a reference for scoring, refusal for fake roles</td><td>temp 0.7, JSON schema</td></tr>
@@ -411,10 +412,10 @@ cross-model check on the open-weights Gemma 4 31B. Streamlit 1.67, Python 3.13, 
 <tr><td>P4 Report</td><td>Grounded only in the transcript JSON, fixed 6-heading structure, word limit</td><td>temp 0.4, Markdown</td></tr>
 </table>
 <p>Code guards: empty answer blocked before any API call; every quote checked against the answer and removed if not found; overall = mean of the 4 scores (0 if invalid); weakest area = lowest score.</p>
-<h3>5. Test results</h3>
+<h3>TR-5 Test results</h3>
 <p><b>Prompt iteration (Evaluator, 11 runs per version).</b> v1 (baseline): {esc(iter_result(s1))}. v4 (final): {esc(iter_result(s4))}.</p>
 <p><b>Test suite.</b> {n_pass}/{len(tests)} tests passed (Normal, Edge and Invalid inputs across all four prompts). Failed: {esc(fail_txt)}. Full table in the Milestone 2 PDF, Section 4.</p>
-<h3>6. Limitations</h3>
+<h3>TR-6 Limitations</h3>
 <ul>{lim}</ul>
 <p>Scores are practice feedback from a language model, not an official assessment; agreement with human (senior) scores on 30 answers will be measured in Milestone 3.
 Responsible use: all test answers are made up by the team, the app asks users not to type personal data, and no data is stored after the session.</p>
@@ -488,7 +489,7 @@ def write_cheatsheet(ctx):
         *[f"    {m[1]} - {m[0].replace(' (Team leader)', '')} - {m[2]}: {m[3]}" for m in MEMBERS],
         "Q23 Anything the evaluator should know: No login needed. Open the prototype link, pick a role in the left sidebar and press "
         "'Start new interview'. The 'Prompt lab' tab runs the Milestone 1 baseline prompt and the final prompt side by side. "
-        "Free-tier API: if it is slow, wait a few seconds and submit again.",
+        "Free-tier API: if it is slow, wait a few seconds and submit again. If the page says the app has gone to sleep, click the wake-up button and wait about 30 seconds.",
         "Q24 Confirmation: tick only after all four members have agreed to the contribution table (Section 7).",
     ]
     (SUB / "FORM_ANSWERS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -2,7 +2,7 @@
 
 **Team PE-B13-42 · MockMate** · Bennett University · SCSE4041 Prompt Engineering mini-project · Problem C10 (Mock interview question and feedback tool)
 
-🔗 **Prototype:** https://mockmate-pe-b13-42.streamlit.app (no login needed)
+🔗 **Prototype:** https://mockmate-pe-b13-42.streamlit.app (no login needed; if it says the app has gone to sleep, click the wake-up button and wait about 30 s)
 
 ## What it does
 Placement-year students practise interviews alone or with friends and get vague feedback. MockMate runs a mock interview with a **4-prompt chain** on Google Gemini:
@@ -59,4 +59,4 @@ The `.env` file is git-ignored. On Streamlit Cloud the key is stored in the app'
 | Aryan Singh | S24CSEU1256 | Documentation and diagrams (diagrams, M2 PDF, technical report, README) |
 
 ## Responsible use
-All questions and answers used in testing are made up by the team. Do not type real personal data into the app. Scores are practice feedback from a language model, not an official assessment; a mentor should review important decisions. AI tools (Gemini for the product, an AI coding assistant for parts of the code and docs) were used during development; the team reviewed and is responsible for all submitted work.
+All questions and answers used in testing are made up by the team. Do not type real personal data into the app. Scores are practice feedback from a language model, not an official assessment; a mentor should review important decisions. AI tools were used: Gemini is the model inside the product, and an AI coding assistant (Claude) generated most of the code, first drafts of the prompts and the docs under the team's direction (commits list it as co-author). The team reviewed and ran everything and is responsible for the submitted work.
