@@ -500,6 +500,6 @@ def write_cheatsheet(ctx):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--reel-url", default="")
-    ap.add_argument("--reel-seconds", default="")
+    ap.add_argument("--reel-url", default="https://drive.google.com/file/d/19SogsM-hJkbW4WIheNFToTUNkEmn6YVi/view")
+    ap.add_argument("--reel-seconds", default="158")
     build(ap.parse_args())

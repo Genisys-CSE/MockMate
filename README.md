@@ -4,6 +4,8 @@
 
 🔗 **Prototype:** https://mockmate-pe-b13-42.streamlit.app (no login needed; if it says the app has gone to sleep, click the wake-up button and wait about 30 s)
 
+🎬 **Demo video (158 s):** https://drive.google.com/file/d/19SogsM-hJkbW4WIheNFToTUNkEmn6YVi/view
+
 ## What it does
 Placement-year students practise interviews alone or with friends and get vague feedback. MockMate runs a mock interview with a **4-prompt chain** on Google Gemini:
 
