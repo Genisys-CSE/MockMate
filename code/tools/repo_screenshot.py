@@ -13,6 +13,6 @@ with sync_playwright() as p:
     pg = b.new_page(viewport={"width": 1280, "height": 1000}, device_scale_factor=1.25)
     pg.goto("https://github.com/Genisys-CSE/MockMate", wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_timeout(5000)
-    pg.screenshot(path=str(ROOT / "docs" / "screenshots" / "repo.png"))
+    pg.screenshot(path=str(ROOT / "docs" / "screenshots" / "repo.png"), clip={"x": 0, "y": 0, "width": 1190, "height": 1000})
     print("saved repo.png")
     b.close()
